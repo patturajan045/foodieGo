@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieGo-Online Order Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-size: 30px; font-weight: bold;"><i class="bi bi-stars"></i>Foodie<span
+                    style="color: red; font-size: 30px;">Go</span></a>
+            <div class="collapse navbar-collapse pt-1 ms-5" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../templates/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#MainContainer">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/offer.html">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/customerDetails.html">Your Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../templates/myFavorites.html">My Favourites</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-outline-dark" type="button" id="profileDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><span class="dropdown-item">{{name}}</span></li>
+                    <li><span class="dropdown-item">{{email}}</span></li>
+                    <li>
+                        <hr class="dropdown-divider bg-light">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-12 orderSummary">
+                    <h5 class="fw-bold pt-2 text-center mt-2">FOODIE<span style="color: red;">GO</span></h5>
+                    <h2 class="fw-bold pt-2 text-center mt-2"><span style="color: red;">ORDER </span>SUMMARY</h2>
+                    <div class="orderPlace">
+                        <div class="m-3 orderContent">
+                            <h4 class="fw-bold text-center pt-3">
+                                <i class="bi bi-bag-check" style="color: #ff4d4d;"></i>
+                                YOUR <span style="color: #ff4d4d;">ORDER</span>
+                            </h4>
+
+                            <div class="form-floating">
+                                <input type="Name" class="form-control" id="Name" placeholder="name">
+                                <label for="floatingInput">Search For Delicious Items...</label>
+                            </div>
+                            <div class="form-floating mt-3">
+                                <input type="number" class="form-control" id="Password" placeholder="Number">
+                                <label for="floatingNumber">Enter Quantity</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orderPlace">
+                        <div class="m-3 orderContent">
+                            <h6 class="fw-bold text-center pt-3 m-3">
+                                <i class="bi bi-shop" style="color: #ff4d4d;"></i>
+                                CHOOSE YOUR <span style="color: #ff4d4d;">RESTAURANT</span>
+                            </h6>
+
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected disabled>Choose Your Favorite Restaurant</option>
+                                <option value="murugan-idli-shop">Murugan Idli Shop</option>
+                                <option value="saravana-bhavan">Saravana Bhavan</option>
+                                <option value="sangeetha-veg">Sangeetha Veg</option>
+                                <option value="anjappar">Anjappar</option>
+                                <option value="dindigul-thalappakatti">Dindigul Thalappakatti</option>
+                                <option value="junior-kuppanna">Junior Kuppanna</option>
+                                <option value="amma-mess">Amma Mess</option>
+                                <option value="konar-kadai">Konar Kadai</option>
+                                <option value="buhari-hotel">Buhari Hotel</option>
+                                <option value="ratna-cafe">Ratna Cafe</option>
+                                <option value="the-marina">The Marina</option>
+                                <option value="hotel-kannappa">Hotel Kannappa</option>
+                                <option value="haribhavanam">Haribhavanam</option>
+                                <option value="the-grand-sweets">The Grand Sweets</option>
+                                <option value="aryaas">Aryaas</option>
+                                <option value="paragon-kozhikode">Paragon Restaurant</option>
+                                <option value="kayees-rahmathulla">Kayees Rahmathulla</option>
+                                <option value="dhe-puttu">Dhe Puttu</option>
+                                <option value="ginger-house">Ginger House</option>
+                                <option value="dal-roti">Dal Roti</option>
+                                <option value="rahmath-hotel">Rahmath Hotel</option>
+                                <option value="biryani-pot">Biryani Pot</option>
+                                <option value="mtr-bangalore">MTR</option>
+                                <option value="vidyarthi-bhavan">Vidyarthi Bhavan</option>
+                                <option value="brahmins-coffee-bar">Brahmin's Coffee Bar</option>
+                                <option value="ctr-sri-sagar">CTR (Sri Sagar)</option>
+                                <option value="meghana-foods">Meghana Foods</option>
+                                <option value="shivaji-hotel">Shivaji Military Hotel</option>
+                                <option value="rrr-mysore">RRR Hotel</option>
+                                <option value="gufha">Gufha</option>
+                                <option value="karavalli">Karavalli</option>
+                                <option value="empire">Empire Restaurant</option>
+                                <option value="nagarjuna">Nagarjuna Restaurant</option>
+                                <option value="fishland-mangalore">Fishland</option>
+                                <option value="kudla-mangalore">Kudla</option>
+                                <option value="hotel-mayura">Hotel Mayura</option>
+                                <option value="biryani-house-hyderabad">Biryani House</option>
+                                <option value="bawarchi-hyderabad">Bawarchi</option>
+                                <option value="shah-ghouse">Shah Ghouse</option>
+                                <option value="paradise-hyderabad">Paradise Biryani</option>
+                                <option value="cafe-bahar">Cafe Bahar</option>
+                                <option value="four-seasons">Four Seasons</option>
+                                <option value="hotel-shadab">Hotel Shadab</option>
+                                <option value="pista-house">Pista House</option>
+                                <option value="minerva-coffee">Minerva Coffee Shop</option>
+                                <option value="kritunga">Kritunga</option>
+                                <option value="southern-mirchi">Southern Mirchi</option>
+                                <option value="rayalaseema-ruchulu">Rayalaseema Ruchulu</option>
+                                <option value="babai-hotel">Babai Hotel</option>
+                                <option value="hotel-minerva">Hotel Minerva</option>
+                                <option value="daspalla-vizag">Daspalla Executive Court</option>
+                                <option value="hotel-bliss">Hotel Bliss</option>
+                                <option value="sri-krishna-sweets">Sri Krishna Sweets</option>
+                                <option value="salem-rr-biryani">Salem RR Biryani</option>
+                                <option value="subbayya-hotel">Subbayya Gari Hotel</option>
+                                <option value="abhiruchi-tirupati">Abhiruchi Hotel</option>
+                                <option value="new-woodlands">New Woodlands Hotel</option>
+                                <option value="le-arabia">Le Arabia</option>
+                                <option value="zaatar-calicut">Zaatar</option>
+                                <option value="cassia-trivandrum">Cassia</option>
+                                <option value="ariyas-kollam">Ariyas</option>
+                                <option value="sree-krishna-kafe">Sree Krishna Kafe</option>
+                                <option value="gokul-veg-mangalore">Gokul Veg</option>
+                                <option value="taj-hotel-bangalore">New Taj Hotel</option>
+                                <option value="alpha-hotel">Alpha Hotel</option>
+                                <option value="southern-spice">Southern Spice</option>
+                                <option value="sree-sainath">Sree Sainath</option>
+                                <option value="vivaha-bhojanambu">Vivaha Bhojanambu</option>
+                                <option value="the-grill-lab">The Grill Lab</option>
+                                <option value="malabar-junction">Malabar Junction</option>
+                                <option value="sea-inn-vizag">Sea Inn</option>
+                                <option value="roti-bar-vizag">Roti Bar</option>
+                                <option value="salt-n-pepper">Salt n Pepper</option>
+                                <option value="gokul-udupi">Gokul Udupi</option>
+                                <option value="kamath-lokaruchi">Kamath Lokaruchi</option>
+                                <option value="spice-venue">The Spicy Venue</option>
+                                <option value="gokul-chat">Gokul Chat</option>
+                                <option value="hotel-nawabs">Hotel Nawab’s</option>
+                                <option value="kamat-hotel">Kamat Hotel</option>
+                                <option value="hotel-balaji">Sai Balaji</option>
+                                <option value="hotel-venkateshwara">Venkateshwara Hotel</option>
+                                <option value="urban-tandoor">Urban Tandoor</option>
+                                <option value="spicy-treats">Spicy Treats</option>
+                                <option value="hotel-supreme">Hotel Supreme</option>
+                                <option value="supreme-upper-crust">Supreme Upper Crust</option>
+                                <option value="ritz-kumar">Ritz Kumar Hotel</option>
+                                <option value="indian-coffee-house">Indian Coffee House</option>
+                                <option value="sarvi-hyderabad">Sarvi Restaurant</option>
+                                <option value="grand-hotel-hyd">Grand Hotel</option>
+                                <option value="four-points-marriott">Four Points by Sheraton</option>
+                                <option value="oriental-kitchen">Oriental Kitchen</option>
+                                <option value="coconut-grove">Coconut Grove</option>
+                                <option value="fusion9">Fusion 9</option>
+                                <option value="karim’s-hyd">Karim’s Hyderabad</option>
+                                <option value="hotel-ramaswamy">Hotel Ramaswamy</option>
+                                <option value="taste-of-madurai">Taste of Madurai</option>
+                                <option value="bay-leaf">Bay Leaf</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-floating mt-3 orderPlace">
+                        <textarea class="form-control" placeholder="Leave a note here" id="specialNote"
+                            style="height: 100px"></textarea>
+                        <label for="specialNote">Special Instructions</label>
+                    </div>
+
+                    <div class="orderPlace">
+                        <div class="m-3 orderContent">
+                            <h6 class="fw-bold text-center pt-3 m-3">
+                                <i class="bi bi-tag" style="color: #ff4d4d;"></i>
+                                APPLY <span style="color: #ff4d4d;">COUPON</span>
+                            </h6>
+
+                            <!-- <p><span class="fw-bold"> APPLY <span style="color: red;">COUPON </span> </span> <a href=""
+                                    style="color: black; float: right;">APPLY</a></p> -->
+                            <div class="form-floating">
+                                <input type="Name" class="form-control" id="Name" placeholder="name">
+                                <label for="floatingInput">Enter Your Coupon Code</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="orderButton fw-bold">Place Your Order</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+</html>

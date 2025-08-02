@@ -7,17 +7,17 @@
     <title>FoodieGo-Online Food Delivery</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="/app/static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
 </head>
 
 <body>
     <header class="Container">
-        <video autoplay loop text-muted playsinline class="backgroundFlip">
-            <source src="app/static/img/istockphoto-180617222-640_adpp_is.mp4" type="video/mp4">
+        <video autoplay loop muted playsinline class="backgroundFlip">
+            <source src="../static/img/istockphoto-180617222-640_adpp_is.mp4" type="video/mp4" />
         </video>
         <div class="content">
 
-            <!-- <div> <img src="app/static/img/WhatsApp Image 2025-07-21 at 19.39.24_ed91442c.jpg" width="50px"
+            <!-- <div> <img src="../static/img/WhatsApp Image 2025-07-21 at 19.39.24_ed91442c.jpg" width="50px"
                     height="50px"></div> -->
             <span class="brand">Foodie<span class="text-danger">Go</span></span>
             <h1>India’s #1 <br>Fast food delivery app</h1>
@@ -37,96 +37,133 @@
             </div>
         </div>
     </header>
+    <nav class="navbar navbar-expand-lg" id="MainContainer" style="background-color: rgba(0, 0, 0, 0.084);">
+        <div class="container-fluid">
+
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling"><a class="navbar-brand" href="#"
+                    style="font-size: 30px; font-weight: bold;"><i class="bi bi-stars"></i> Foodie<span
+                        style="color: red; font-size: 30px;">Go</span></a></button>
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fs-5 fw-bold text-center" id="offcanvasScrollingLabel">Foodie<span
+                            class="text-danger">Go</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="pt-4 ms-3" style="margin-bottom: 55px;" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="../templates/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../templates/offer.html">Offers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../templates/customerDetails.html">Your Info</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../templates/myFavorites.html">My Favourites</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-outline-dark" type="button" id="profileDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><span class="dropdown-item">{{name}}</span></li>
+                    <li><span class="dropdown-item">{{email}}</span></li>
+                    <li>
+                        <hr class="dropdown-divider bg-light">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
 
     <main>
-        <section id="MainContainer" class="firstContainer">
-            <div>
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#" style="font-weight: bold;"><img
-                                src="app/static/img/4634722.png" width="50px" height="40px"> Foodie<span
-                                style="color: red; font-size: 20px;">Go</span></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <section class="firstContainer">
+            <div class="text-center pt-5" style="padding-bottom: 3rem;">
+                <h1 style="font-size: 60px; font-weight: 800;">
+                    Craving Something Delicious?
+                    <br>
+                    <span style="color: red;">FoodieGo</span> Delivers It Fast!
+                </h1>
 
-                            </ul>
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-dark" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="firstContainer-1">
-                <img src="app/static/img/crop-plate-with-salad.jpg" alt="" class="img-fluid">
-                <div class="continerContent">
-                    <div>Foodie<span style="color: red;">Go</span></div>
-                    <p>Order Online Delivery
-                        <br>Restaurants Near Me
-                    </p>
+                <p class="mt-4 fw-bold text-muted" style="font-size: 22px;">
+                    Fresh Foods from your favorite restaurants – delivered to your doorstep in minutes.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mb-3 linkGroup">
+                    <a href="#foodItem" class="btn btn-outline-light">FOOD</a>
+                    <a href="#juiceItems" class="btn btn-outline-light">JUICE</a>
+                    <a href="#dessertsItem" class="btn btn-outline-light">DESSERTS</a>
+                </div>
+
+                <div class="d-flex flex-wrap gap-3 mb-4 linkGroups">
+                    <a href="#SnacksItem" class="btn btn-outline-light">SNACKS & SIDES</a>
+                    <a href="#restaurants" class="btn btn-outline-light">BEST DINING RESTAURANTS</a>
+                </div>
+                <p class="text-muted mt-5 fw-bold">Crave. Click. Eat. Order Food Online from Nearby Restaurants</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+                    <a href="../templates/orderPage.html" class="btn btn-danger px-4 py-2">Order Now</a>
+                    <a href="../templates/offer.html" class="btn btn-outline-dark px-4 py-2">See Offers</a>
                 </div>
             </div>
+
         </section>
 
         <hr>
-        <section class="MainContainer1">
+        <section class="MainContainer1 py-5 bg-light">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-12 colum-2">
-                        Better <span class="text-dark">food</span> for more people
-                        <h4>
+                <div class="row align-items-center text-center text-lg-start">
+                    <div class="col-lg-12">
+                        <h1 class="display-5 fw-semibold mb-3">
+                            Better <span class="text-danger">food</span> for more people
+                        </h1>
+                        <h4 class="text-secondary mb-4">
                             For over a decade,
                             <span class="text-danger">we’ve enabled our customers to discover new tastes,</span>
-                            delivered right to their doorstep
+                            delivered right to their doorstep.
                         </h4>
-                        <div class="stat-container">
-                            <div class="d-flex justify-content-between colum-3">
-                                <div class="flex align-items-center stats">
-                                    <Span> <i class="bi bi-shop-window"></i></Span>
-                                    <div><span class="stats-box-1">30000 + </span>
-                                        <br>
-                                        <span class="stats-box-2">Restaurant</span>
-                                    </div>
 
-                                </div>
-
-                                <div class="flex align-items-center stats">
-                                    <span><i class="bi bi-geo-alt fw-bold"></i></span>
-                                    <div>
-                                        <span class="stats-box-1"> 800 + </span>
-                                        <br>
-                                        <span class="stats-box-2">Cites</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex align-items-center stats">
-                                    <span><i class="bi bi-chat-square-fill"></i></span>
-                                    <div><span class="stats-box-1">3 Billion +</span>
-                                        <br>
-                                        <span class="stats-box-2">delivery</span>
-                                    </div>
-                                </div>
+                        <!-- Stats section -->
+                        <div class="row justify-content-center g-4">
+                            <div class="col-md-4 text-center">
+                                <i class="bi bi-shop-window fs-1 text-primary mb-2"></i>
+                                <div><span class="h4 fw-bold">30,000+</span></div>
+                                <div class="text-muted">Restaurants</div>
                             </div>
-
+                            <div class="col-md-4 text-center">
+                                <i class="bi bi-geo-alt fs-1 text-danger mb-2"></i>
+                                <div><span class="h4 fw-bold">800+</span></div>
+                                <div class="text-muted">Cities</div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <i class="bi bi-chat-right fs-1 text-success mb-2"></i>
+                                <div><span class="h4 fw-bold">3 Billion+</span></div>
+                                <div class="text-muted">Deliveries</div>
+                            </div>
                         </div>
+
                     </div>
-                    <!-- <div class="col-lg-3">
-                        <img src="https://b.zmtcdn.com/data/o2_assets/901001826baf04838b1bf505176ff0b11742453501.png"
-                            class="img-fluid" alt="Food Image" />
-                    </div> -->
                 </div>
             </div>
         </section>
+
         <hr>
         <!-- <--foods-- -->
-        <section class="MainContainer2">
-            <!-- <div> <img src="app/static/img/WhatsApp Image 2025-07-21 at 19.39.24_ed91442c.jpg" width="50px"
+        <section class="MainContainer2" id="foodItem">
+            <!-- <div> <img src="../static/img/WhatsApp Image 2025-07-21 at 19.39.24_ed91442c.jpg" width="50px"
                     height="50px"></div> -->
             <h1>What’s waiting for you <br /> on the app?</h1>
             <p>Our app is packed with features that enable you to experience food delivery like never before</p>
@@ -148,7 +185,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/delicious-indian-dosa-arrangement.jpg" alt="Dosa"
+                                    <img src="../static/img/delicious-indian-dosa-arrangement.jpg" alt="Dosa"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Dosa</div>
                                     <div class="sub-items">
@@ -159,7 +196,7 @@
 
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/fried-potato-pancakes.jpg" alt="Chicken Dosa"
+                                    <img src="../static/img/fried-potato-pancakes.jpg" alt="Chicken Dosa"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Chicken Dosa</div>
                                     <div class="sub-items">
@@ -169,7 +206,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/traditional-caucasian-gutab-kutab-gozleme-with-sumakh-yogurt-wooden-plate.jpg"
+                                    <img src="../static/img/traditional-caucasian-gutab-kutab-gozleme-with-sumakh-yogurt-wooden-plate.jpg"
                                         alt="Porata" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Porata</div>
                                     <div class="sub-items">
@@ -181,7 +218,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/lamb-bone-sauteed-bone-broth-with-herbs-tomato-sauce.jpg"
+                                    <img src="../static/img/lamb-bone-sauteed-bone-broth-with-herbs-tomato-sauce.jpg"
                                         alt="Mutton Biriyani" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Mutton Biriyani</div>
                                     <div class="sub-items">
@@ -198,7 +235,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/chicken-skewers-with-slices-sweet-peppers-dill.jpg"
+                                    <img src="../static/img/chicken-skewers-with-slices-sweet-peppers-dill.jpg"
                                         alt="Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Chicken</div>
                                     <div class="sub-items">
@@ -209,7 +246,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/delicious-asian-noodles-concept.jpg" alt="Chicken Dosa"
+                                    <img src="../static/img/delicious-asian-noodles-concept.jpg" alt="Chicken Dosa"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Noodels</div>
                                     <div class="sub-items">
@@ -219,7 +256,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/spicy-beef-curry-goan-style-600nw-2273176963.webp"
+                                    <img src="../static/img/spicy-beef-curry-goan-style-600nw-2273176963.webp"
                                         alt="Porata" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Beef</div>
                                     <div class="sub-items">
@@ -229,7 +266,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/images.jpg" alt="Mutton Biriyani" class="img-fluid"
+                                    <img src="../static/img/images.jpg" alt="Mutton Biriyani" class="img-fluid"
                                         loading="lazy">
                                     <div class="sub-container-items">Fish Curry</div>
                                     <div class="sub-items">
@@ -246,7 +283,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/side-view-deep-fried-fish-fillet-with-red-onion-sauce-slice-lemon-plate.jpg"
+                                    <img src="../static/img/side-view-deep-fried-fish-fillet-with-red-onion-sauce-slice-lemon-plate.jpg"
                                         alt="Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Fish</div>
                                     <div class="sub-items">
@@ -257,7 +294,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/side-view-stewed-meatballs-with-tomato-sauce-bell-pepper-spring-onion-mint-plate.jpg"
+                                    <img src="../static/img/side-view-stewed-meatballs-with-tomato-sauce-bell-pepper-spring-onion-mint-plate.jpg"
                                         alt="Chicken Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Chicken Chuka</div>
                                     <div class="sub-items">
@@ -267,7 +304,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/fried-potato-pancakes-with-herring.jpg" alt="Porata"
+                                    <img src="../static/img/fried-potato-pancakes-with-herring.jpg" alt="Porata"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Burger</div>
                                     <div class="sub-items">
@@ -277,7 +314,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/arrangement-different-pakistan-goodies.jpg"
+                                    <img src="../static/img/arrangement-different-pakistan-goodies.jpg"
                                         alt="Mutton Biriyani" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">North Indian Dhal</div>
                                     <div class="sub-items">
@@ -294,7 +331,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table.jpg"
+                                    <img src="../static/img/indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table.jpg"
                                         alt="Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Indian Dhal</div>
                                     <div class="sub-items">
@@ -304,7 +341,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/healthy-meal-with-beef-rice-vegetables-generated-by-ai.jpg"
+                                    <img src="../static/img/healthy-meal-with-beef-rice-vegetables-generated-by-ai.jpg"
                                         alt="Chicken Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Indian Meal</div>
                                     <div class="sub-items">
@@ -314,7 +351,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/shutterstock_1488206756-min-1-600x600.jpg" alt="Porata"
+                                    <img src="../static/img/shutterstock_1488206756-min-1-600x600.jpg" alt="Porata"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Panner Butter</div>
                                     <div class="sub-items">
@@ -324,7 +361,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/images.jpg" alt="Mutton Biriyani" class="img-fluid"
+                                    <img src="../static/img/images.jpg" alt="Mutton Biriyani" class="img-fluid"
                                         loading="lazy">
                                     <div class="sub-container-items">Fish Curry</div>
                                     <div class="sub-items">
@@ -365,7 +402,7 @@
             <p>Foodie</span><span style="color: red;">Go</span> provides only fresh, cold-pressed juices with no sugar
                 or preservatives, delivering pure natural taste and health daily.</p>
         </div>
-        <section class="MainContainer-3">
+        <section class="MainContainer-3" id="juiceItems">
             <div id="carouselExampleFade2" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
 
@@ -374,7 +411,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/freepik__the-style-is-candid-image-photography-with-natural__96167.jpeg"
+                                    <img src="../static/img/freepik__the-style-is-candid-image-photography-with-natural__96167.jpeg"
                                         alt="Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Apple</div>
                                     <div class="sub-items">
@@ -384,7 +421,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/delicious-mango-still-life.jpg" alt="Chicken Dosa"
+                                    <img src="../static/img/delicious-mango-still-life.jpg" alt="Chicken Dosa"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Mango</div>
                                     <div class="sub-items">
@@ -395,7 +432,7 @@
 
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/closeup-shot-glass-orange-juice-fresh-oranges-wooden-crate-with-blurry.jpg"
+                                    <img src="../static/img/closeup-shot-glass-orange-juice-fresh-oranges-wooden-crate-with-blurry.jpg"
                                         alt="Porata" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Orange</div>
                                     <div class="sub-items">
@@ -405,7 +442,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/front-view-pineapple-with-one-piece-cut-out-from-whole-fruit-pineapple-juice-green-surface-white-surface.jpg"
+                                    <img src="../static/img/front-view-pineapple-with-one-piece-cut-out-from-whole-fruit-pineapple-juice-green-surface-white-surface.jpg"
                                         alt="Mutton Biriyani" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Pineapple</div>
                                     <div class="sub-items">
@@ -422,7 +459,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/side-view-black-grape-juice-with-drinking-tube-glass-bowl-red-grapes-with-leaves-white-background.jpg"
+                                    <img src="../static/img/side-view-black-grape-juice-with-drinking-tube-glass-bowl-red-grapes-with-leaves-white-background.jpg"
                                         alt="Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Grapes</div>
                                     <div class="sub-items">
@@ -432,7 +469,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/close-up-foods-cocktails-tall-glass.jpg" alt="Chicken Dosa"
+                                    <img src="../static/img/close-up-foods-cocktails-tall-glass.jpg" alt="Chicken Dosa"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Watermelon</div>
                                     <div class="sub-items">
@@ -442,7 +479,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/healthy-drink-fresh-carrot-juice.jpg" alt="Porata"
+                                    <img src="../static/img/healthy-drink-fresh-carrot-juice.jpg" alt="Porata"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Carrot</div>
                                     <div class="sub-items">
@@ -452,7 +489,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/green-cocktail-with-mint-ice-cubes-lemon-slice.jpg"
+                                    <img src="../static/img/green-cocktail-with-mint-ice-cubes-lemon-slice.jpg"
                                         alt="Mutton Biriyani" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Mojito</div>
                                     <div class="sub-items">
@@ -469,7 +506,7 @@
                         <div class="container subContainer1">
                             <div class="row justify-content-center g-4">
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="app/static/img/slices-fruits-near-glass-drink-with-ice-herbs-table.jpg"
+                                    <img src="../static/img/slices-fruits-near-glass-drink-with-ice-herbs-table.jpg"
                                         alt="Dosa" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">lemon</div>
                                     <div class="sub-items">
@@ -480,7 +517,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/pomegranate-juice-glass-with-pipe.jpg" alt="Chicken Dosa"
+                                    <img src="../static/img/pomegranate-juice-glass-with-pipe.jpg" alt="Chicken Dosa"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Pomegranate</div>
                                     <div class="sub-items">
@@ -490,7 +527,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/pexels-daria-andrievskaya-137434684-11066831.jpg"
+                                    <img src="../static/img/pexels-daria-andrievskaya-137434684-11066831.jpg"
                                         alt="Porata" class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Cranberry Juice </div>
                                     <div class="sub-items">
@@ -500,7 +537,7 @@
                                     </div>
                                 </div>
                                 <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="app/static/img/pexels-farhad-19239107.jpg" alt="Mutton Biriyani"
+                                    <img src="../static/img/pexels-farhad-19239107.jpg" alt="Mutton Biriyani"
                                         class="img-fluid" loading="lazy">
                                     <div class="sub-container-items">Mixed fruit juice</div>
                                     <div class="sub-items">
@@ -535,12 +572,12 @@
         <hr>
 
         <!-- <---deserts-->
-        <div class="sub-content-3">
+        <div class="sub-content-3" id="dessertsItem">
             <div class="subContainer3">We Platform <span class="text-danger">Desserts</span> Varieties</div>
             <p>Foodie</span><span style="color: red;">Go</span> Dessert is happiness condensed into one bite, melting
                 away stress and bringing instant smiles to every heart around.</p>
         </div>
-        <section class="MainContainer-3">
+        <section class="MainContainer-3" >
             <div id="carouselExampleFade3" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
 
@@ -712,7 +749,7 @@
         <hr>
 
         <!-- <--snaks- -->
-        <div class="sub-content-3">
+        <div class="sub-content-3" id="SnacksItem">
             <div class="subContainer3">We Platform <span class="text-danger">Snacks & Sides</span> Varieties</div>
             <p>Foodie</span><span style="color: red;">Go</span> Feeling snacky? Grab something crispy, cheesy, and bold
                 —
@@ -890,7 +927,7 @@
         <hr>
 
         <!-- image taps -->
-        <section class="MainContainer-4">
+        <section class="MainContainer-4" id="restaurants">
             <ul class="nav nav-pills mb-3 justify-content-center imagetaps" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
@@ -1017,7 +1054,14 @@
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                     tabindex="0">
-                    
+                    <div class="Ratedhead">
+                        <div class="text-center p-4 m-4 fs-1 fw-bold">TOP RATED
+                            Foodie<span style="color: red;">Go</span> BY CUSTOMER</div>
+                    </div>
+                    <div class="subContainer5">
+
+
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
                     tabindex="0"></div>
