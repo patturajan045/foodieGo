@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+    <style>
+        .badge-cash {
+            background-color: #28a745;
+        }
+
+        /* green */
+        .badge-card {
+            background-color: #17a2b8;
+        }
+
+        /* blue */
+        .badge-asap {
+            background-color: #ffc107;
+        }
+
+        /* yellow */
+        .badge-scheduled {
+            background-color: #6c757d;
+        }
+
+        /* grey */
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"><i class="bi bi-person-fill-gear fs-2 p-3"></i>Foodie<span
+                    class="text-danger">Go</span> Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+                aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/admin">Admin Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/adminUser" id="navCustomers">Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/adminUser" id="navCustomers">Customers</a></li>
+
+                </ul>
+            </div>
+
+            <div class="dropdown ms-3">
+                <button class="btn btn-outline-light" type="button" id="profileDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><span class="dropdown-item">{{ name }}</span></li>
+                    <li><span class="dropdown-item">{{ email }}</span></li>
+                    <li>
+                        <hr class="dropdown-divider bg-light">
+                    </li>
+                    <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section py-5 text-white"
+        style="background: linear-gradient(135deg, #ff6b6b, #ff4757);  margin-bottom: 30px;">
+        <div class="container text-center">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+                <i class="bi bi-bag-fill fs-1 p-3 rounded-circle bg-light text-danger"></i>
+                <div>
+                    <h1 class="display-5 fw-bold">FoodiGo Orders</h1>
+                    <p class="lead mb-0">Track, filter, and manage customer orders in real time with complete control.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-danger text-white d-flex align-items-center rounded-top-4">
+                <i class="bi bi-bag-fill fs-2 me-3"></i>
+                <h3 class="mb-0">FoodiGo Orders</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle" id="ordersTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Restaurant</th>
+                                <th>Food</th>
+                                <th>Qty</th>
+                                <th>Coupon</th>
+                                <th>Instructions</th>
+                                <th>Payment</th>
+                                <th>Delivery</th>
+                                <th>Tip</th>
+                                <th>Order Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="bg-dark text-center text-white py-3 mt-5 border-top">
+        <div class="container">
+            <small>
+                © 2025 <strong>FoodieGo</strong> · Admin Panel · Controlled by <strong>Patturajan M</strong>
+            </small>
+        </div>
+    </footer>
+
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tbody = document.querySelector("#ordersTable tbody");
+
+        async function loadOrders() {
+            try {
+                const res = await fetch("/orders/data");
+                if (!res.ok) throw new Error("Network response was not OK");
+                const orders = await res.json();
+
+                tbody.innerHTML = "";
+
+                orders.forEach((o, index) => {
+                    // Badge colors
+                    let paymentBadge = o.paymentMethod === "cash"
+                        ? 'bg-success text-white'
+                        : 'bg-info text-white';
+                    let deliveryBadge = o.deliveryTimePreference?.toLowerCase() === "asap"
+                        ? 'bg-warning text-dark'
+                        : 'bg-secondary text-white';
+
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${o.restaurant || "-"}</td>
+                    <td>${o.foodName || "-"}</td>
+                    <td>${o.quantity || "-"}</td>
+                    <td><span class="badge bg-info">${o.couponCode || "N/A"}</span></td>
+                    <td>${o.specialInstructions || "-"}</td>
+                    <td><span class="badge ${paymentBadge}">${o.paymentMethod || "-"}</span></td>
+                    <td><span class="badge ${deliveryBadge}">${o.deliveryTimePreference || "-"}</span></td>
+                    <td>$${o.tipAmount || 0}</td>
+                    <td>${o.orderDate || "-"}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${o._id}">
+                            Delete
+                        </button>
+                    </td>
+                `;
+                    tbody.appendChild(tr);
+                });
+
+                // Delete handler
+                document.querySelectorAll(".delete-btn").forEach(btn => {
+                    btn.addEventListener("click", async () => {
+                        const id = btn.dataset.id;
+                        const result = await Swal.fire({
+                            title: 'Are you sure?',
+                            text: "This order will be deleted!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33',
+                            cancelButtonColor: '#3085d6',
+                            confirmButtonText: 'Yes, delete!'
+                        });
+
+                        if (result.isConfirmed) {
+                            await deleteOrder(id, btn.closest("tr"));
+                        }
+                    });
+                });
+
+            } catch (err) {
+                console.error("Error loading orders:", err);
+                Swal.fire("Error", "Failed to load orders.", "error");
+            }
+        }
+
+        async function deleteOrder(id, row) {
+            try {
+                const res = await fetch(`/orders/delete/${id}`, { method: "DELETE" });
+                const data = await res.json();
+                if (res.ok) {
+                    row.remove(); // remove row instantly
+                    Swal.fire("Deleted!", "Order deleted successfully.", "success");
+                } else {
+                    Swal.fire("Error", data.message, "error");
+                }
+            } catch (err) {
+                console.error("Delete error:", err);
+                Swal.fire("Error", "Failed to delete order.", "error");
+            }
+        }
+
+        loadOrders();
+    });
+</script>
+</body>
+
+</html>

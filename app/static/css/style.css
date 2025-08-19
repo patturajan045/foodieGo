@@ -1,6 +1,14 @@
 body {
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    opacity: 0;
+    animation: fadeInPage 1s ease forwards;
+}
+
+@keyframes fadeInPage {
+    to {
+        opacity: 1;
+    }
 }
 
 * {
@@ -14,7 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.34);
+    background-color: rgba(0, 0, 0, 0.375);
     overflow: hidden;
     text-align: center;
 }
@@ -26,8 +34,9 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 0;
 }
+
 
 .content {
     color: #fff;
@@ -41,8 +50,8 @@ h1 {
 
 .brand {
     font-weight: bold;
-    font-size: 50px;
-    background-color: rgba(11, 11, 11, 0.088);
+    font-size: 80px !important;
+    background-color: rgba(11, 11, 11, 0.066);
 }
 
 .scrollDown a {
@@ -53,9 +62,7 @@ h1 {
 
 }
 
-.scroll {
-    margin-top: 300px;
-}
+
 
 .MainContainer2 {
     width: 100%;
@@ -116,11 +123,7 @@ h1 {
 
 .MainContainer2 {
     background: linear-gradient(0deg, #ffffff 0%, #ffffff 100%);
-    padding: 60px 0;
-    margin-top: 20px;
     text-align: center;
-
-
 }
 
 .MainContainer2 h1 {
@@ -138,7 +141,9 @@ h1 {
 .subContainer2 {
     font-size: 30px;
     font-weight: bold;
-    margin: 40px 0 20px;
+    margin-top: 40px;
+    color: red;
+
 }
 
 .sub-container-items {
@@ -226,8 +231,13 @@ h1 {
 }
 
 .sub-content {
-    background-color: rgba(0, 0, 0, 0.076);
-    border-radius: 20px;
+    background: linear-gradient(135deg, #ffe5e5, #fff8f8);
+    padding: 10px 0px;
+    margin-top: 100px;
+}
+
+.food-varieties-section {
+    padding: 30px 20px;
 }
 
 .sub-content p {
@@ -235,25 +245,7 @@ h1 {
     font-size: 15px;
 }
 
-.MainContainer-3 {
-    width: 100%;
-    height: 100%;
-    padding: 60px 0;
-    text-align: center;
-}
 
-.sub-content-3 {
-    background-color: rgba(0, 0, 0, 0.076);
-    border-radius: 20px;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.sub-content-3 p {
-    padding: 10px;
-    font-size: 15px;
-}
 
 .imagetaps {
     font-size: 20px;
@@ -355,40 +347,65 @@ h1 {
     color: white !important;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background: red !important;
-    border-radius: 25px !important;
+.firstContainer h1 {
+    font-size: 60px;
 }
 
-.carousel-control-next {
-    right: -50px !important;
-    opacity: 0.5 !important;
-
-}
-
-.carousel-control-prev {
-    left: -50px !important;
-    opacity: 0.5 !important;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-prev:active {
-    transform: scale(1.17) !important;
-    opacity: 5.5 !important;
-
-}
-
-.carousel-control-next:hover,
-.carousel-control-next:active {
-    transform: scale(1.17) !important;
-    opacity: 5.5 !important;
+.firstContainer p {
+    font-size: 22px;
 }
 
 /* 
 .firstContainer-1 img:hover {
     transform: scale(1.05);
 } */
+
+
+/* <---------image taps ----- festive specisls ----- */
+
+.festival-banner {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    background-image: url("/static/images/festival_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: brightness(0.7);
+}
+
+.offer-card img {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff8c00;
+}
+
+.offer-card .card-title {
+    color: #ff5722;
+    font-weight: bold;
+}
+
+.festival-footer {
+    background-color: #a83279;
+    background-image: linear-gradient(45deg, #a83279, #d38312);
+}
+
+.food-card img {
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid #ffc107;
+}
+
+.food-card .card-title {
+    font-weight: bold;
+    color: #ff5722;
+}
+
+.stars {
+    font-size: 1.2rem;
+    color: #fbc02d;
+}
+
+.scroll-container {
+    margin-top: 50px;
+}
 
 
 @media (max-width: 768px) {
@@ -406,6 +423,13 @@ h1 {
         padding: 0 20px;
     }
 
+    .firstContainer h1 {
+        font-size: 40px;
+    }
+
+    .firstContainer p {
+        font-size: 20px;
+    }
 
     .colum-2 {
         font-size: 35px;
@@ -415,8 +439,8 @@ h1 {
         font-size: 16px;
     }
 
-    .MainContainer2 h1 {
-        font-size: 30px;
+    .MainContainer2 h2 {
+        font-size: 20px;
     }
 
     .firstContainer-1 {
@@ -440,7 +464,7 @@ h1 {
     .linkGroup a:hover,
     .linkGroups a:hover {
         background-color: rgb(245, 9, 9);
-        color: black;
+        color: rgba(0, 0, 0, 0.738);
         transform: scale(0.95);
     }
 
@@ -448,32 +472,6 @@ h1 {
         font-size: 20px;
     }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        border-radius: 5px !important;
-    }
-
-    .carousel-control-prev span {
-        width: 30px !important;
-        height: 40px !important;
-    }
-
-    .carousel-control-next span {
-        width: 30px !important;
-        height: 40px !important;
-    }
-
-
-    .carousel-control-next {
-        right: -5px !important;
-        opacity: 0.3 !important;
-
-    }
-
-    .carousel-control-prev {
-        left: -5px !important;
-        opacity: 0.3 !important;
-    }
 
     .orderPlace {
         margin: 20px;
@@ -482,16 +480,23 @@ h1 {
 
 @media (max-width: 450px) {
     .brand {
-        font-size: 30px;
+        font-size: 50px !important;
     }
 
-    .content h3,
-    h1 {
-        font-size: 15px;
+    .content h1 {
+        font-size: 1px !important;
+    }
+
+    .content h3 {
+        font-size: 5px !important;
     }
 
     .scrollDown a {
         font-size: 20px;
+    }
+
+    .scroll-header h2 {
+        font-size: 15px;
     }
 
     .colum-2 {
@@ -502,8 +507,8 @@ h1 {
         font-size: 14px;
     }
 
-    .MainContainer2 h1 {
-        font-size: 25px;
+    .MainContainer2 h2 {
+        font-size: 15px;
     }
 
     .stats {
@@ -519,16 +524,28 @@ h1 {
         font-size: 20px;
     }
 
+    .firstContainer h1 {
+        font-size: 20px;
+    }
+
+    .firstContainer p {
+        font-size: 15px;
+    }
+
     .firstContainer-1 {
         position: relative;
         overflow: hidden;
         height: 50vh;
     }
 
+    .heading {
+        font-size: 5px;
+    }
+
     .linkGroup a,
     .linkGroups a {
-        font-size: 6px;
-        padding: 4px 8px;
+        font-size: 10px;
+        padding: 4px 6px;
     }
 
     .continerContent p {
@@ -579,38 +596,60 @@ h1 {
         padding: 4px 8px;
     }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        border-radius: 5px !important;
-    }
-
-    .carousel-control-prev span {
-        width: 30px !important;
-        height: 40px !important;
-    }
-
-    .carousel-control-next span {
-        width: 30px !important;
-        height: 40px !important;
-    }
-
-
-    .carousel-control-next {
-        right: -5px !important;
-        opacity: 0.3 !important;
-
-    }
-
-    .carousel-control-prev {
-        left: -5px !important;
-        opacity: 0.3 !important;
-    }
 
     .orderPlace {
         margin: 20px;
     }
 
 }
+
+/* customer  */
+
+
+.customer-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
+
+.customer-hero p {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.customer-hero .btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background-color: #ff4c3b;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.customer-hero .btn:hover {
+    background-color: #ff1c00;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .customer-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .customer-hero p {
+        font-size: 1rem;
+    }
+
+    .customer-hero .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
 
 
 /* 
@@ -622,36 +661,130 @@ body {
     margin-bottom: 50px;
 }
 
-.navbar-nav {
-    gap: 50px;
-    position: absolute !important;
+
+.navbar-nav .nav-link {
+    position: relative;
+    transition: color 0.2s;
 }
 
-.navbar-nav li {
-    font-size: 15px;
-    font-weight: bold;
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #e63946;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
-.dropdown-menu {
-    background-color: black;
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
 }
 
-.dropdown-item,
-.dropdown-divider {
+.navbar-nav .nav-link:hover {
+    color: #e63946;
+}
+
+.btn-outline-dark {
+    transition: all 0.3s;
+}
+
+.btn-outline-dark:hover {
+    background: #e63946;
+    border-color: #e63946;
     color: white;
 }
 
-.orderSummary {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+.order-hero {
+    height: 70vh;
+    background-color: #3333331f;
+    /* Light pastel gradient */
+    color: #333;
+    /* Dark text for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInHero 1s ease-in-out;
 }
 
-.orderPlace {
-    border: rgba(0, 0, 0, 0.256) 2px solid;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    margin: 40px;
+.order-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
+
+.order-hero p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+.order-hero .btn {
+    padding: 18px 45px;
+    font-size: 1.25rem;
+    border-radius: 50px;
+    background-color: #ff6f61;
+    /* Contrast button */
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.order-hero .btn:hover {
+    background-color: #ff4c3b;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInHero {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .order-hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .order-hero p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .order-hero {
+        height: 60vh;
+        padding: 0 10px;
+    }
+
+    .order-hero h1 {
+        font-size: 2rem;
+    }
+
+    .order-hero p {
+        font-size: 1rem;
+    }
+
+    .order-hero .btn {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
+}
+
 
 .orderButton {
     background-color: red;
@@ -661,4 +794,434 @@ body {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* <--- order details page  */
+
+.order-hero {
+    height: 60vh;
+    background-color: #3333331f;
+    /* Black-to-light gradient */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 40px 40px;
+    /* optional rounded bottom */
+    animation: fadeInHero 1s ease-in-out;
+}
+
+.order-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
+
+.order-hero p {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.order-hero .btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background-color: #ff4c3b;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.order-hero .btn:hover {
+    background-color: #ff1c00;
+    transform: scale(1.05);
+}
+
+@keyframes fadeInHero {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .order-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .order-hero p {
+        font-size: 1rem;
+    }
+
+    .order-hero .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+/* 
+<--------------loginPage $ RegisterPage-----------------> */
+
+.login {
+    background: #fff5f5;
+
+}
+
+.cardLogin {
+    border-radius: 20px;
+    border: none;
+}
+
+
+/* 
+----------------- Offer Page ----------------- */
+
+
+.offer-card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.offer-card:hover {
+    transform: scale(1.03);
+}
+
+/* scroll event for all button */
+.food-varieties-section,
+.juice-varieties-section {
+    margin-top: 40px;
+}
+
+.scroll-section {
+    margin-top: 50px;
+    margin: 2px;
+}
+
+.scroll-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.scroll-buttons button {
+    background: red;
+    border: none;
+    color: white;
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.scroll-buttons button:hover {
+    background: linear-gradient(135deg, #ff0000, #800000, #000000);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.scroll-buttons button:active {
+    transform: scale(0.99);
+}
+
+
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 10px;
+    scroll-behavior: smooth;
+}
+
+
+.food-card {
+    min-width: 300px;
+    height: 400px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.food-card img {
+    width: 100%;
+    height: 265px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.food-card h5 {
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.food-card p {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.food-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* <------- animations for hero section ------ */
+
+.firstContainer {
+    background: #fff;
+    min-height: 450px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.delay-2 {
+    animation-delay: 0.6s;
+}
+
+.delay-3 {
+    animation-delay: 0.9s;
+}
+
+.delay-4 {
+    animation-delay: 1.2s;
+}
+
+.delay-5 {
+    animation-delay: 1.5s;
+}
+
+/* Button hover effect */
+.btn-outline-dark:hover {
+    background-color: #000;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c12d2d;
+    box-shadow: 0 0 8px rgba(193, 45, 45, 0.6);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .btn-lg {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* <---- amimation in heroo sectioin */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
+}
+
+/* Zoom-in animation for video */
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
+}
+
+.animate-zoomIn {
+    animation: zoomIn 30s ease-in-out infinite alternate;
+}
+
+/* Bounce animation for scroll */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+/* 
+amimations for better section  */
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeUp {
+    opacity: 0;
+    animation-name: fadeUp;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+/* <--- each section animation  */
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeUp 0.4s ease-out forwards;
+}
+
+
+/* <---- bold word animations  */
+
+@keyframes slideFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.fw-bold {
+    animation: slideFadeIn 0.6s ease forwards;
+    animation-delay: 1s;
+}
+
+
+/* <--- productDetails-- */
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-link:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+
+
+.imagetabs .nav-link {
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 50px;
+    margin: 0 8px;
+    color: #555;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.imagetabs .nav-link:hover {
+    color: #fff;
+    background: linear-gradient(90deg, #ff4e50 0%, #f9d423 100%);
+    transform: translateY(-2px);
+}
+
+.imagetabs .nav-link.active {
+    color: #fff;
+    background: linear-gradient(90deg, #ff4e50 0%, #f9d423 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieGo | Your Orders & Order History</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .hover-shadow:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+        }
+
+        .badge {
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .badge {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-title {
+                font-size: 1rem;
+            }
+
+            .badge {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <i class="bi bi-stars me-1"></i> Foodie<span class="text-danger">Go</span>
+            </a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/offer">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer">Your Info</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orderPage">Your Order</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="order-hero d-flex align-items-center text-center mb-5">
+        <div class="container animate__animated animate__fadeInDown">
+            <h1 class="fw-bold mb-3">
+                <span style="color: #ff4c3b;">Foodie</span><span style="color: #100f0f;">Go</span>
+                <span style="color: #ff4c3b;" >Track Your Orders</span> 
+            </h1>
+            <p class="lead mb-4 text-dark">
+                Track all your delicious meals – see status, reorder, or manage your orders easily!
+            </p>
+            <a href="#orderList" class="btn btn-danger btn-lg">View My Orders</a>
+        </div>
+    </section>
+    <!-- Main Content -->
+    <div class="container py-4" style="margin-top: 250px;">
+
+        <div id="orderList" class="row g-3"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 FoodieGo. All rights reserved. | <i class="bi bi-envelope-fill"></i> support@foodiego.com | <i
+            class="bi bi-telephone-fill"></i> +91 9894393894
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Orders JS -->
+    <script>
+        const orderList = document.getElementById("orderList");
+
+        function renderOrderCard(order) {
+            return `
+            <div class="col-12">
+                <div class="card shadow-sm border-0 rounded-4 hover-shadow">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title text-danger fw-bold mb-0">
+                                <span class="text-dark">RestaurantName:</span> ${order.restaurant}
+                            </h5>
+                            <span class="badge bg-success fs-6">#${order.orderId}</span>
+                        </div>
+                        <p class="text-muted mb-2">
+                            <i class="bi bi-calendar-event me-1"></i>
+                            <span class="text-dark fw-bold">Order Date:</span> ${order.date}
+                        </p>
+                        <div class="mb-3 mt-3 p-2 rounded-3 text-white bg-danger bg-opacity-25">
+                            <strong class="fw-bold text-dark">Food :</strong>
+                            <span class="ms-2 text-dark fw-bold">${order.foodName}</span>
+                            <span class="badge bg-white text-dark ms-2">x${order.quantity}</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">
+                                <i class="bi bi-credit-card-2-front me-1"></i>
+                                <span class="text-dark fw-bold">Payment Method:</span>${order.paymentMethod}
+                            </span>
+                            <div>
+                                <button class="btn btn-sm btn-outline-danger me-2" onclick="deleteOrder('${order.orderId}')">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary" onclick="reorder('${order.orderId}')">
+                                    <i class="bi bi-arrow-repeat"></i> Reorder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        async function deleteOrder(orderId) {
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "This will permanently delete your order.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            });
+            if (result.isConfirmed) {
+                try {
+                    const res = await fetch(`/orderDetails/delete/${orderId}`, { method: "DELETE" });
+                    const { status, message } = await res.json();
+                    if (status === "success") {
+                        Swal.fire("Deleted!", message, "success");
+                        loadOrders();
+                    } else {
+                        Swal.fire("Error", message || "Failed to delete order.", "error");
+                    }
+                } catch (err) {
+                    Swal.fire("Error", "Error deleting order: " + err.message, "error");
+                }
+            }
+        }
+
+        function reorder(orderId) {
+            Swal.fire({
+                title: "Reorder this?",
+                text: "You will be redirected to the order page.",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#28a745",
+                cancelButtonColor: "#6c757d",
+                confirmButtonText: "Yes, go to order page!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/orderPage";
+                }
+            });
+        }
+
+        async function loadOrders() {
+            try {
+                const res = await fetch("/orderDetails/myOrders");
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const { status, data, message } = await res.json();
+                orderList.innerHTML = status === "success" && data.length > 0
+                    ? data.map(renderOrderCard).join("")
+                    : `<div class="text-center text-muted">${message || "No orders found"}</div>`;
+            } catch (err) {
+                orderList.innerHTML = `<p class="text-danger text-center">Error loading orders: ${err.message}</p>`;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadOrders);
+    </script>
+
+</body>
+
+</html>

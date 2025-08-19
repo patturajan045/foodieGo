@@ -4,122 +4,136 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoodieGo-Online Food Delivery</title>
+    <title>FoodieGo | Online Food Delivery & Orders</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="../static/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-    <header class="Container">
-        <video autoplay loop muted playsinline class="backgroundFlip">
+    <header class="position-relative overflow-hidden" style="height: 100vh;">
+        <video autoplay loop muted playsinline
+            class="backgroundFlip position-absolute top-0 start-0 w-100 h-100 object-fit-cover animate-zoomIn"
+            aria-hidden="true">
             <source src="../static/img/istockphoto-180617222-640_adpp_is.mp4" type="video/mp4" />
         </video>
-        <div class="content">
 
-            <!-- <div> <img src="../static/img/WhatsApp Image 2025-07-21 at 19.39.24_ed91442c.jpg" width="50px"
-                    height="50px"></div> -->
-            <span class="brand">Foodie<span class="text-danger">Go</span></span>
-            <h1>India’s #1 <br>Fast food delivery app</h1>
-            <h3>
-                Experience fast & easy online ordering on the
-                <span style="background-color: rgba(0, 0, 0, 0.126); border-radius: 10px;">
-                    Foodie<span class="text-danger">Go
-                    </span>
-                </span>app
+        <div class="container position-relative text-center text-white px-3 animate-fadeIn"
+            style="z-index: 1; top: 50%; transform: translateY(-50%);">
+            <span class="brand fs-1 fw-bold">
+                Foodie<span class="text-danger">Go</span>
+            </span>
+            <h1 class="display-6 mt-2">
+                India’s #1 <br>Fast food delivery app
+            </h1>
+            <h3 class="mt-2 fw-normal"
+                style="background-color: rgba(0, 0, 0, 0.126); border-radius: 10px; display: inline-block; padding: 0.2em 0.6em;">
+                Experience fast &amp; easy online ordering on the
+                Foodie<span class="text-danger">Go</span> app
             </h3>
-            <br><br><br><br>
-            <div class="scroll">
-                <span class="scrollDown">
-                    <a href="#MainContainer">Scroll <span class="text-danger">Down</span>
-                        <i class="bi bi-chevron-double-down fs-6 text-light"></i></a>
-                </span>
+
+            <div class="scroll mt-3">
+                <a href="#MainContainer"
+                    class="text-decoration-none text-light fs-5 d-inline-flex align-items-center gap-1 animate-bounce">
+                    Scroll <span class="text-danger">Down</span>
+                    <i class="bi bi-chevron-double-down fs-6"></i>
+                </a>
             </div>
         </div>
     </header>
-    <nav class="navbar navbar-expand-lg" id="MainContainer" style="background-color: rgba(0, 0, 0, 0.084);">
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3" id="MainContainer">
         <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#" style="font-size: 28px; font-weight: bold;">
+                <i class="bi bi-stars me-1"></i>
+                Foodie<span style="color: #e63946;">Go</span>
+            </a>
 
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                aria-controls="offcanvasScrolling"><a class="navbar-brand" href="#"
-                    style="font-size: 30px; font-weight: bold;"><i class="bi bi-stars"></i> Foodie<span
-                        style="color: red; font-size: 30px;">Go</span></a></button>
+            <!-- Toggle button for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-                id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fs-5 fw-bold text-center" id="offcanvasScrollingLabel">Foodie<span
-                            class="text-danger">Go</span></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <div class="pt-4 ms-3" style="margin-bottom: 55px;" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="../templates/index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../templates/offer.html">Offers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../templates/customerDetails.html">Your Info</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../templates/myFavorites.html">My Favourites</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="btn btn-outline-dark" type="button" id="profileDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                    <li><span class="dropdown-item">{{name}}</span></li>
-                    <li><span class="dropdown-item">{{email}}</span></li>
-                    <li>
-                        <hr class="dropdown-divider bg-light">
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ps-3 ms-4 gap-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/offer">Offers</a>
                     </li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#restaurants">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer">Your Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders">Your Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">About Us</a>
+                    </li>
                 </ul>
             </div>
 
+            <!-- Profile dropdown -->
+            <div class="dropdown ms-auto">
+                <button class="btn btn-outline-dark d-flex align-items-center" id="profileDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle me-1"></i> Profile
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="profileDropdown">
+                    <li><span class="dropdown-item fw-semibold">{{name}}</span></li>
+                    <li><span class="dropdown-item text-muted">{{email}}</span></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-danger fw-bold" href="/auth/logout">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <main>
-        <section class="firstContainer">
-            <div class="text-center pt-5" style="padding-bottom: 3rem;">
-                <h1 style="font-size: 60px; font-weight: 800;">
-                    Craving Something Delicious?
-                    <br>
-                    <span style="color: red;">FoodieGo</span> Delivers It Fast!
+        <section class="firstContainer py-5 text-center">
+            <div class="container px-4">
+                <h1 class="fw-bold mb-3 animate-fadeIn">
+                    Craving Something Delicious?<br>
+                    <span class="text-danger">FoodieGo</span> Delivers It Fast!
                 </h1>
 
-                <p class="mt-4 fw-bold text-muted" style="font-size: 22px;">
+                <p class="mt-3 fw-semibold text-muted animate-fadeIn delay-1">
                     Fresh Foods from your favorite restaurants – delivered to your doorstep in minutes.
                 </p>
-                <div class="d-flex flex-wrap gap-3 mb-3 linkGroup">
-                    <a href="#foodItem" class="btn btn-outline-light">FOOD</a>
-                    <a href="#juiceItems" class="btn btn-outline-light">JUICE</a>
-                    <a href="#dessertsItem" class="btn btn-outline-light">DESSERTS</a>
+
+                <div class="d-flex flex-wrap gap-3 justify-content-center my-4 animate-fadeIn delay-2">
+                    <a href="#foodItem" class="btn btn-outline-dark btn-sm px-4">FOOD</a>
+                    <a href="#juiceItems" class="btn btn-outline-dark btn-sm px-4">JUICE</a>
+                    <a href="#dessertsItem" class="btn btn-outline-dark btn-sm px-4">DESSERTS</a>
                 </div>
 
-                <div class="d-flex flex-wrap gap-3 mb-4 linkGroups">
-                    <a href="#SnacksItem" class="btn btn-outline-light">SNACKS & SIDES</a>
-                    <a href="#restaurants" class="btn btn-outline-light">BEST DINING RESTAURANTS</a>
+                <div class="d-flex flex-wrap gap-3 justify-content-center mb-5 animate-fadeIn delay-3">
+                    <a href="#SnacksItem" class="btn btn-outline-dark btn-sm px-4">SNACKS & SIDES</a>
+                    <a href="#restaurants" class="btn btn-outline-dark btn-sm px-4">BEST DINING RESTAURANTS</a>
                 </div>
-                <p class="text-muted mt-5 fw-bold">Crave. Click. Eat. Order Food Online from Nearby Restaurants</p>
-                <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
-                    <a href="../templates/orderPage.html" class="btn btn-danger px-4 py-2">Order Now</a>
-                    <a href="../templates/offer.html" class="btn btn-outline-dark px-4 py-2">See Offers</a>
+
+                <p class="text-muted fw-semibold mb-5 animate-fadeIn delay-4">
+                    Crave. Click. Eat. Order Food Online from Nearby Restaurants
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3 animate-fadeIn delay-5">
+                    <a href="/orderPage" class="btn btn-danger px-4 py-2 btn-lg shadow-sm">
+                        Order Now
+                    </a>
+                    <a href="/offer" class="btn btn-outline-dark px-4 py-2 btn-lg shadow-sm">
+                        See Offers
+                    </a>
                 </div>
             </div>
-
         </section>
 
         <hr>
@@ -127,10 +141,10 @@
             <div class="container">
                 <div class="row align-items-center text-center text-lg-start">
                     <div class="col-lg-12">
-                        <h1 class="display-5 fw-semibold mb-3">
+                        <h1 class="display-5 fw-semibold mb-3 animate-fadeUp" style="animation-delay: 0.2s;">
                             Better <span class="text-danger">food</span> for more people
                         </h1>
-                        <h4 class="text-secondary mb-4">
+                        <h4 class="text-secondary mb-4 animate-fadeUp" style="animation-delay: 0.4s;">
                             For over a decade,
                             <span class="text-danger">we’ve enabled our customers to discover new tastes,</span>
                             delivered right to their doorstep.
@@ -138,941 +152,510 @@
 
                         <!-- Stats section -->
                         <div class="row justify-content-center g-4">
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-4 text-center animate-fadeUp" style="animation-delay: 0.6s;">
                                 <i class="bi bi-shop-window fs-1 text-primary mb-2"></i>
                                 <div><span class="h4 fw-bold">30,000+</span></div>
                                 <div class="text-muted">Restaurants</div>
                             </div>
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-4 text-center animate-fadeUp" style="animation-delay: 0.8s;">
                                 <i class="bi bi-geo-alt fs-1 text-danger mb-2"></i>
                                 <div><span class="h4 fw-bold">800+</span></div>
                                 <div class="text-muted">Cities</div>
                             </div>
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-4 text-center animate-fadeUp" style="animation-delay: 1s;">
                                 <i class="bi bi-chat-right fs-1 text-success mb-2"></i>
                                 <div><span class="h4 fw-bold">3 Billion+</span></div>
                                 <div class="text-muted">Deliveries</div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
+
+
+
 
         <hr>
         <!-- <--foods-- -->
-        <section class="MainContainer2" id="foodItem">
-            <!-- <div> <img src="../static/img/WhatsApp Image 2025-07-21 at 19.39.24_ed91442c.jpg" width="50px"
-                    height="50px"></div> -->
-            <h1>What’s waiting for you <br /> on the app?</h1>
-            <p>Our app is packed with features that enable you to experience food delivery like never before</p>
+        <section class="MainContainer2 section-animate" id="foodItem">
+            <h1>What’s Waiting for You <br> on the Foodie<span style="color: black;">Go</span> App?</h1>
+            <p>Discover powerful features that make ordering your favorite meals faster, easier, and more enjoyable than
+                ever.</p>
 
             <div class="sub-content">
-                <div class="subContainer2 ">We Platform <span class="text-danger">Food</span> Varieties</div>
-                <p>Foodie</span><span style="color: red;">Go</span> offers fresh, healthy, delicious food made daily
-                    with quality ingredients to deliver taste, nutrition, and pure satisfaction always.</p>
-
-            </div>
-            <br>
-            <br>
-            <!-- Carousel -->
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
-
-                    <!-- FoodItem -->
-                    <div class="carousel-item active">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/delicious-indian-dosa-arrangement.jpg" alt="Dosa"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Dosa</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Spice Villa, 12 MG Road, Bangalore, Karnataka 560001</span>
-                                    </div>
-
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/fried-potato-pancakes.jpg" alt="Chicken Dosa"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Chicken Dosa</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Aroma Dine, 45 Park Street, Kolkata, West Bengal 700016</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/traditional-caucasian-gutab-kutab-gozleme-with-sumakh-yogurt-wooden-plate.jpg"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Porata</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.1 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Coastal Breeze, 78 Anna Salai, Chennai, Tamil Nadu 600002
-
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/lamb-bone-sauteed-bone-broth-with-herbs-tomato-sauce.jpg"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Mutton Biriyani</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.7 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Urban Tadka, 10 Brigade Road, Bangalore, Karnataka 560025</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/chicken-skewers-with-slices-sweet-peppers-dill.jpg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Chicken</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Biryani House, 55 Banjara Hills Rd No.12, Hyderabad, Telangana
-                                            5000341</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/delicious-asian-noodles-concept.jpg" alt="Chicken Dosa"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Noodels</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Spice Villa, 12 MG Road, Bangalore, Karnataka 560001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/spicy-beef-curry-goan-style-600nw-2273176963.webp"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Beef</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.6 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Delhi Treats, 22 Connaught Place, New Delhi, Delhi 110001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/images.jpg" alt="Mutton Biriyani" class="img-fluid"
-                                        loading="lazy">
-                                    <div class="sub-container-items">Fish Curry</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.1 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Pune Spice Hub, 18 Law College Road, Pune, Maharashtra 411004</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/side-view-deep-fried-fish-fillet-with-red-onion-sauce-slice-lemon-plate.jpg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Fish</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Bombay Bites, 67 Linking Road, Bandra West, Mumbai, Maharashtra
-                                            400050</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/side-view-stewed-meatballs-with-tomato-sauce-bell-pepper-spring-onion-mint-plate.jpg"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Chicken Chuka</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.1 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Punjab Flavours, 30 VIP Road, Zirakpur, Punjab 140603</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/fried-potato-pancakes-with-herring.jpg" alt="Porata"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Burger</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Tandoori Tales, 89 Sector 17 Market, Chandigarh 160017</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/arrangement-different-pakistan-goodies.jpg"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">North Indian Dhal</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Kolkata Kitchen, 120 Gariahat Road, Kolkata, West Bengal 700019</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table.jpg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Indian Dhal</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.8 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>South Feast, 50 Residency Road, Bangalore, Karnataka 560025</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/healthy-meal-with-beef-rice-vegetables-generated-by-ai.jpg"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Indian Meal</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Masala Square, 72 New BEL Road, Bangalore, Karnataka 560054</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/shutterstock_1488206756-min-1-600x600.jpg" alt="Porata"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Panner Butter</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.1 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Hyderabad Spice Route, 9 Abids Road, Hyderabad, Telangana 500001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/images.jpg" alt="Mutton Biriyani" class="img-fluid"
-                                        loading="lazy">
-                                    <div class="sub-container-items">Fish Curry</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.1 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Pune Spice Hub, 18 Law College Road, Pune, Maharashtra 411004</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-                        data-bs-slide="prev">
-                        <span class="" style="background-color: red; height: 50px; width:40px; border-radius: 25px; "><i
-                                class="bi bi-chevron-left text-white fs-2"></i></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-                        data-bs-slide="next">
-                        <span style="background-color: red; width: 40px; height: 50px; border-radius: 25px;"><i
-                                class="bi bi-chevron-right text-white fs-2"></i></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-
+                <div class="subContainer2">
+                    Your Destination for Delicious Food Varieties
                 </div>
+                <p>
+                    Foodie<span style="color: red;">Go</span> offers fresh, healthy, delicious food made daily
+                    with quality ingredients to deliver taste, nutrition, and pure satisfaction always.
+                </p>
             </div>
         </section>
-        <hr>
-        <!-- <--juice-- -->
-        <div class="sub-content-3">
-            <div class="subContainer3">We Platform <span class="text-danger">Juice</span> Varieties</div>
-            <p>Foodie</span><span style="color: red;">Go</span> provides only fresh, cold-pressed juices with no sugar
-                or preservatives, delivering pure natural taste and health daily.</p>
-        </div>
-        <section class="MainContainer-3" id="juiceItems">
-            <div id="carouselExampleFade2" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
-
-                    <!-- Example Carousel Item -->
-                    <div class="carousel-item active">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/freepik__the-style-is-candid-image-photography-with-natural__96167.jpeg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Apple</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.1 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Fresh Squeeze, 15 MG Road, Bangalore, Karnataka 560001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/delicious-mango-still-life.jpg" alt="Chicken Dosa"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Mango</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.7 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Juice Junction, 22 Brigade Road, Bangalore, Karnataka 560025</span>
-                                    </div>
-
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/closeup-shot-glass-orange-juice-fresh-oranges-wooden-crate-with-blurry.jpg"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Orange</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Fruity Hub, 10 Park Street, Kolkata, West Bengal 700016</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/front-view-pineapple-with-one-piece-cut-out-from-whole-fruit-pineapple-juice-green-surface-white-surface.jpg"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Pineapple</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Nature’s Sip, 78 Anna Salai, Chennai, Tamil Nadu 600002</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="food-varieties-section">
+            <div class="scroll-section">
+                <div class="scroll-header">
+                    <h2 class="fw-bold">Our Signature Food Varieties</h2>
+                    <div class="scroll-buttons">
+                        <button id="btnLeft"><i class="bi bi-arrow-left-circle"></i></button>
+                        <button id="btnRight"><i class="bi bi-arrow-right-circle"></i></button>
                     </div>
+                </div>
 
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/side-view-black-grape-juice-with-drinking-tube-glass-bowl-red-grapes-with-leaves-white-background.jpg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Grapes</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Fresh Squeeze, 15 MG Road, Bangalore, Karnataka 560001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/close-up-foods-cocktails-tall-glass.jpg" alt="Chicken Dosa"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Watermelon</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.6 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Juice House, 33 Banjara Hills Rd No.12, Hyderabad, Telangana 500034</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/healthy-drink-fresh-carrot-juice.jpg" alt="Porata"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Carrot</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Fruit Bay, 19 Connaught Place, New Delhi, Delhi 110001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/green-cocktail-with-mint-ice-cubes-lemon-slice.jpg"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Mojito</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Cool Crush, 27 Law College Road, Pune, Maharashtra 411004</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="../static/img/slices-fruits-near-glass-drink-with-ice-herbs-table.jpg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">lemon</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Smoothie Spot, 67 Linking Road, Bandra West, Mumbai, Maharashtra
-                                            400050</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/pomegranate-juice-glass-with-pipe.jpg" alt="Chicken Dosa"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Pomegranate</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Orange Roots, 72 New BEL Road, Bangalore, Karnataka 560054</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/pexels-daria-andrievskaya-137434684-11066831.jpg"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Cranberry Juice </div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Sip & Smile, 9 Abids Road, Hyderabad, Telangana 500001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="../static/img/pexels-farhad-19239107.jpg" alt="Mutton Biriyani"
-                                        class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Mixed fruit juice</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Juice Paradise, 15 Fatehabad Road, Agra, Uttar Pradesh 282001</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="scroll-container" id="scrollBox">
 
                 </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade2"
-                    data-bs-slide="prev">
-                    <span class="" style="background-color: red; height: 50px; width:50px; border-radius: 25px;"><i
-                            class="bi bi-chevron-left text-white fs-2"></i></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
 
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade2"
-                    data-bs-slide="next">
-                    <span
-                        style="background-color: red; width: 50px; height: 50px; border-radius: 25px; opacity:5.5 !important;"><i
-                            class="bi bi-chevron-right text-white fs-2"></i></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </section>
         <hr>
+        <!-- <------juice Varieties - -->
+        <section class="MainContainer2 container-3 section-animate" id="juiceItems">
+            <div class="sub-content">
+                <div class="subContainer2">Our <span class="text-danger">Juice</span> Varieties</div>
+                <p>
+                    Foodie<span style="color: red;">Go</span> offers fresh, cold-pressed juices with no added sugar or
+                    preservatives — delivering pure, natural taste and daily health benefits.
+                </p>
 
-        <!-- <---deserts-->
-        <div class="sub-content-3" id="dessertsItem">
-            <div class="subContainer3">We Platform <span class="text-danger">Desserts</span> Varieties</div>
-            <p>Foodie</span><span style="color: red;">Go</span> Dessert is happiness condensed into one bite, melting
-                away stress and bringing instant smiles to every heart around.</p>
-        </div>
-        <section class="MainContainer-3" >
-            <div id="carouselExampleFade3" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
+        </section>
 
-                    <!-- Example Carousel Item -->
-                    <div class="carousel-item active">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="https://cdn.openart.ai/uploads/image_Wka5sWCR_1753465045710_raw.jpg"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Chocolate Brownie</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.8 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Sweet Haven, 15 MG Road, Bangalore, Karnataka 560001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://cdn.openart.ai/uploads/image_KsauI6TI_1753465156647_raw.jpg"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Gulab Jamun</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.7 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Dessert Delight, 22 Brigade Road, Bangalore, Karnataka 560025</span>
-                                    </div>
-
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://cdn.openart.ai/uploads/image_hw2aEMtB_1753465374942_raw.jpg"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Cheesecake</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Choco Bliss, 10 Park Street, Kolkata, West Bengal 700016</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://cdn.openart.ai/uploads/image_zFVfsKEZ_1753465459910_raw.jpg"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Ice Cream Sundae</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Creamy Treats, 78 Anna Salai, Chennai, Tamil Nadu 600002</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="juice-varieties-section">
+            <div class="scroll-section">
+                <div class="scroll-header">
+                    <h2 class="fw-bold m-4">Fresh & Signature Juice Varieties</h2>
+                    <div class="scroll-buttons">
+                        <button id="btnLeftJuice"><i class="bi bi-arrow-left-circle"></i></button>
+                        <button id="btnRightJuice"><i class="bi bi-arrow-right-circle"></i></button>
                     </div>
+                </div>
 
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7bdrm0v79g1b11zs7vxfr8wd7mffr6.webp&w=1920&q=75"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Chocolate Lava Cake</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Sugar Rush, 33 Banjara Hills Rd No.12, Hyderabad, Telangana 500034
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn79wzpfdq794c8dzed2324dgs7mfg1s.webp&w=1920&q=75"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Gajar Ka Halwa </div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.6 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Blissful Bites, 19 Connaught Place, New Delhi, Delhi 110001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7dtzk7wygayda59g7kw58twn7mf62x.webp&w=1920&q=75"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Kheer / Rice Pudding</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Frosty Corner, 27 Law College Road, Pune, Maharashtra 411004</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7dt8x0zqwr1k5666aa8b547d7mexc6.webp&w=1920&q=75"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Rasgulla</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Cake Studio, 67 Linking Road, Bandra West, Mumbai, Maharashtra
-                                            400050</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="scroll-container" id="scrollBoxJuice">
+                </div>
+        </section>
+
+        <section class="MainContainer2 container-3 section-animate" id="dessertsItem">
+            <div class="sub-content">
+                <div class="subContainer2">Our <span class="text-danger">Dessert</span> Selections</div>
+                <p>
+                    Foodie<span style="color: red;">Go</span> is committed to offering an exquisite range of freshly
+                    prepared desserts, crafted with premium ingredients to deliver exceptional taste and quality.
+                </p>
+            </div>
+
+
+        </section>
+
+        <section class="dessert-varieties-section">
+            <div class="scroll-section">
+                <div class="scroll-header">
+                    <h2 class="fw-bold m-4">Our Exclusive Dessert Collection</h2>
+                    <div class="scroll-buttons m-2">
+                        <button id="btnLeftdessert"><i class="bi bi-arrow-left-circle"></i></button>
+                        <button id="btnRightdessert"><i class="bi bi-arrow-right-circle"></i></button>
                     </div>
+                </div>
 
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn76c5tc1gxcfm8hk54155rjxs7mfet3.webp&w=1920&q=75"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">lemon</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Smoothie Spot, 67 Linking Road, Bandra West, Mumbai, Maharashtra
-                                            400050</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn71vs4vj62qfzht0mckdmjnmx7mfz2x.webp&w=1920&q=75"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Fruit Custard</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Dessert Hub, 89 Sector 17 Market, Chandigarh 160017</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn74ytk2p752sh7z5rj7pkf7rh7mfgxy.webp&w=1920&q=75"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Kulfi</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Pastry Palace, 120 Gariahat Road, Kolkata, West Bengal 700019</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn78s7mx7psewe6zcd8xsfp8x17mecpw.webp&w=1920&q=75"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Jalebi with Rabri</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Dessert Garden, 14 DLF Phase 3, Gurugram, Haryana 122002</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="scroll-container" id="scrollBoxdessert">
 
                 </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade3"
-                    data-bs-slide="prev">
-                    <span class="" style="background-color: red; height: 50px; width:50px; border-radius: 25px;"><i
-                            class="bi bi-chevron-left text-white fs-2"></i></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade3"
-                    data-bs-slide="next">
-                    <span class=""
-                        style="background-color: red; width: 50px; height: 50px; border-radius: 25px; opacity:5.5 !important;"><i
-                            class="bi bi-chevron-right text-white fs-2"></i></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
         </section>
-        <hr>
 
-        <!-- <--snaks- -->
-        <div class="sub-content-3" id="SnacksItem">
-            <div class="subContainer3">We Platform <span class="text-danger">Snacks & Sides</span> Varieties</div>
-            <p>Foodie</span><span style="color: red;">Go</span> Feeling snacky? Grab something crispy, cheesy, and bold
-                —
-                our sides are here to make every meal extra delicious</p>
-        </div>
-        <section class="MainContainer-3">
-            <div id="carouselExampleFade4" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
 
-                    <!-- Example Carousel Item -->
-                    <div class="carousel-item active">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7c6egkm6mkf95n12kgay1f8x7me1a0.webp&w=1920&q=75"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">French Fries</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.8 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Sweet Haven, 15 MG Road, Bangalore, Karnataka 560001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7a0seax5fhyantwzw6r9v0217mexab.webp&w=1920&q=75"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Loaded Nachos</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.7 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Dessert Delight, 22 Brigade Road, Bangalore, Karnataka 560025</span>
-                                    </div>
+        <!-- <--- snacks item --- -->
 
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn71mb69kxkrcdze0sz0vh6tj97mfype.webp&w=1920&q=75"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Garlic Bread</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Choco Bliss, 10 Park Street, Kolkata, West Bengal 700016</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn731e3k0a4aty81gsr46w80e17mf7x2.webp&w=1920&q=75"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Veg/Non-Veg Sandwiches</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Creamy Treats, 78 Anna Salai, Chennai, Tamil Nadu 600002</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="MainContainer2 container-3 section-animate" id="dessertsItem">
+            <div class="sub-content">
+                <div class="subContainer2">Explore Our <span class="text-danger">Snack</span> Selection</div>
+                <p>
+                    At Foodie<span style="color: red;">Go</span>, we curate an assortment of flavorful and wholesome
+                    snacks, prepared daily with the finest ingredients to delight your taste buds.
+                </p>
+            </div>
+
+
+        </section>
+
+        <section class="snacks">
+            <div class="scroll-section">
+                <div class="scroll-header">
+                    <h2 class="fw-bold m-4">Our Signature Snack Collection</h2>
+                    <div class="scroll-buttons m-2">
+                        <button id="btnLeftsnacks"><i class="bi bi-arrow-left-circle"></i></button>
+                        <button id="btnRightsnacks"><i class="bi bi-arrow-right-circle"></i></button>
                     </div>
-
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7c8m40t8fazd8pee32ccwve97mfnpk.webp&w=1920&q=75"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Spring Rolls</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Sugar Rush, 33 Banjara Hills Rd No.12, Hyderabad, Telangana 500034
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn72s8e277z5fy42saf8vc4t817mf3xc.webp&w=1920&q=75"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Momos (Veg & Chicken) </div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.6 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Blissful Bites, 19 Connaught Place, New Delhi, Delhi 110001</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn71psabbx73nywj1xxx3tdg557mfnde.webp&w=1920&q=75"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Pakoras & Bhajis</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Frosty Corner, 27 Law College Road, Pune, Maharashtra 411004</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7av2enxenj5vpgsxpchjgq0d7mfrc2.webp&w=1920&q=75"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Cheese Balls</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Cake Studio, 67 Linking Road, Bandra West, Mumbai, Maharashtra
-                                            400050</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="container subContainer1">
-                            <div class="row justify-content-center g-4">
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 container-items">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn73m3rvfbjwc5a2nfzk0dx1rd7mfkkd.webp&w=1920&q=75"
-                                        alt="Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Samosa</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.2 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Smoothie Spot, 67 Linking Road, Bandra West, Mumbai, Maharashtra
-                                            400050</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7f4cxkty4kzv5ccah243xpf17mftws.webp&w=1920&q=75"
-                                        alt="Chicken Dosa" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Chicken Wings</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.3 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Dessert Hub, 89 Sector 17 Market, Chandigarh 160017</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn750ew656rrt80kfp3pzatswd7mezj8.webp&w=1920&q=75"
-                                        alt="Porata" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Nuggets & Popcorn Chicken</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.5 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Pastry Palace, 120 Gariahat Road, Kolkata, West Bengal 700019</span>
-                                    </div>
-                                </div>
-                                <div class="container-items col-lg-3 col-md-4 col-sm-6 col-12">
-                                    <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn73cz4w5g7tr7wvzgh5n8xyz17meedf.webp&w=1920&q=75"
-                                        alt="Mutton Biriyani" class="img-fluid" loading="lazy">
-                                    <div class="sub-container-items">Cutlets & Patties</div>
-                                    <div class="sub-items">
-                                        <div><i class="bi bi-star-fill fs-5 text-success"></i> 4.4 .<span
-                                                class="fw-bold"> 30 - 35 Mins</span></div>
-                                        <span>Dessert Garden, 14 DLF Phase 3, Gurugram, Haryana 122002</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade4"
-                    data-bs-slide="prev">
-                    <span class="" style="background-color: red; height: 50px; width:50px; border-radius: 25px;"><i
-                            class="bi bi-chevron-left text-white fs-2"></i></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
+                <div class="scroll-container" id="scrollBoxsnacks">
+                </div>
 
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade4"
-                    data-bs-slide="next">
-                    <span
-                        style="background-color: red; width: 50px; height: 50px; border-radius: 25px; opacity:5.5 !important;"><i
-                            class="bi bi-chevron-right text-white fs-2"></i></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+
             </div>
+
         </section>
-        <hr>
+
 
         <!-- image taps -->
         <section class="MainContainer-4" id="restaurants">
-            <ul class="nav nav-pills mb-3 justify-content-center imagetaps" id="pills-tab" role="tablist">
+            <!-- Tabs Navigation -->
+            <div style="margin-top: 60px;">
+                <h2 class="text-center">Explore Our Delicious Categories on Foodie<span style="color: red;">Go.</span>
+                </h2>
+            </div>
+            <ul class="nav nav-pills mb-4 mt-4 justify-content-center imagetabs" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true"><span>Best Dining Restaurants</span></button>
+                        aria-selected="true">
+                        Best Dining Restaurants
+                    </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false"><span>Top Rated by Customers</span></button>
+                        aria-selected="false">
+                        Top Rated by Customers
+                    </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                        aria-selected="false"><span style="color: black;">Festival Specials</span></button>
+                        aria-selected="false">
+                        Festival Specials
+                    </button>
                 </li>
             </ul>
+
+            <!-- Tabs Content -->
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+
+                <!-- Best Dining Restaurants Tab -->
+                <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
                     tabindex="0">
-                    <div class="cardhead">Popular <span style="color: red;">Order Food</span> Online restaurants
-                        near me</div>
-                    <div class="sub-container-4 d-flex justify-content-center flex-wrap">
-                        <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
-                            <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn77ceyn4zwm4ba779ckwqpac17mebmq.webp&w=1920&q=75"
-                                class="card-img-top" alt="...">
-                            <div class="card-title mt-2 float-left ">GujRaj Restaurant<i class="bi bi-fork-knife"
-                                    style="color: black;"></i></div>
-                            <p class="cardContent text-muted">Poratta , ChickkenChuka , BeefCurry , FishCurry .......
-                            </p>
-                            <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> T-Nagar , Chennai</p>
-                            <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
-                                4.5 || 30 - 35
-                                Mins</p>
-                            <p class="btn cardoffer">Up to 10% off with
-                                bank
-                                offers</p>
-                        </div>
-
-                        <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
-                            <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn78bxdvgttjzavha5g7yj62j97me05g.webp&w=1920&q=75"
-                                class="card-img-top" alt="...">
-                            <div class="card-title mt-2 float-left ">Madras-MidNight-Biriyani<i class="bi bi-fork-knife"
-                                    style="color: black;"></i></div>
-                            <p class="cardContent text-muted">Poratta , chickkenBiriyani , BeefBiriyani , <br>
-                                MuttonBiriyani
-                            </p>
-                            <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i>Kamaraj nagar ,
-                                madurai</p>
-                            <p class="btn fs-6 cardrating"><i class="bi bi-star-fill fs-5"> 4.2 || 30 - 35
-                                    Mins</i>
-                            </p>
-                            <p class="btn cardoffer">Up to 10% off with
-                                bank
-                                offers</p>
-                        </div>
-
-                        <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
-                            <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn795khspdzkmj7ked46cftsyd7mes9d.webp&w=1920&q=75"
-                                class="card-img-top" alt="...">
-                            <div class="card-title mt-2 float-left ">Pizza Hut<i class="bi bi-fork-knife"
-                                    style="color: black;"></i></div>
-                            <p class="cardContent text-muted">Pizza , Burger , Shawarma , French Fry ....</p>
-                            <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> Besent Nagar ,
-                                Chennai</p>
-                            <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
-                                4.3 || 30 - 35
-                                Mins</p>
-                            <p class="btn cardoffer">Up to 10% off with
-                                bank
-                                offers</p>
-                        </div>
-
-                        <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
-                            <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7fzrqcds39zdm1xp8b82pbw57mfdwc.webp&w=1920&q=75"
-                                class="card-img-top" alt="...">
-                            <div class="card-title mt-2 float-left ">Salem RR Biriyani<i class="bi bi-fork-knife"
-                                    style="color: black;"></i></div>
-                            <p class="cardContent text-muted">ChickenBiriyani , MuttonBiriyani , Chicken 65 <br> Grill
-                                Chicken.......</p>
-                            <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> Salem RR Biriyani</p>
-                            <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
-                                4.1 || 30 - 35
-                                Mins</p>
-                            <p class="btn cardoffer">Up to 10% off with
-                                bank
-                                offers</p>
-                        </div>
-
-                        <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
-                            <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn78smjmv3k0hg8hng8f8df5ss7mepzx.webp&w=1920&q=75"
-                                class="card-img-top" alt="...">
-                            <div class="card-title mt-2 float-left ">Border MM Porata<i class="bi bi-fork-knife"
-                                    style="color: black;"></i></div>
-                            <p class="cardContent text-muted">Poratta , chickkenGravy , MuttonGravy .......</p>
-                            <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> Sengottai , Tenkasi
-                            </p>
-                            <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
-                                4.8 || 30 - 35
-                                Mins</p>
-                            <p class="btn cardoffer">Up to 10% off with
-                                bank
-                                offers</p>
-                        </div>
-
-                        <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
-                            <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7f7n9abca40bgmwyefh9tfmn7mewgd.webp&w=1920&q=75"
-                                class="card-img-top" alt="...">
-                            <div class="card-title mt-2 float-left ">t<i class="bi bi-fork-knife"
-                                    style="color: black;"></i>Hotel Junction</div>
-                            <p class="cardContent text-muted">Idle , Dosa , Puri , Pongal , Vada , Pure Veg</p>
-                            <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> junction ,
-                                tirunelveli</p>
-                            <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
-                                4.7 || 30 - 35
-                                Mins</p>
-                            <p class="btn cardoffer">Up to 10% off with
-                                bank
-                                offers</p>
-                        </div>
+                    <div class="cardhead">Popular <span class="text-danger">Order Food</span> Online Restaurants Near Me
                     </div>
+                    <div class="sub-container-4 d-flex justify-content-center flex-wrap">
 
+                        <div class="sub-container-4 d-flex justify-content-center flex-wrap">
+                            <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
+                                <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn77ceyn4zwm4ba779ckwqpac17mebmq.webp&w=1920&q=75"
+                                    class="card-img-top" alt="...">
+                                <div class="card-title mt-2 float-left ">GujRaj Restaurant<i class="bi bi-fork-knife"
+                                        style="color: black;"></i></div>
+                                <p class="cardContent text-muted">Poratta , ChickkenChuka , BeefCurry , FishCurry
+                                    .......
+                                </p>
+                                <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> T-Nagar , Chennai
+                                </p>
+                                <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
+                                    4.5 || 30 - 35
+                                    Mins</p>
+                                <p class="btn cardoffer">Up to 10% off with
+                                    bank
+                                    offers</p>
+                            </div>
+
+                            <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
+                                <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn78bxdvgttjzavha5g7yj62j97me05g.webp&w=1920&q=75"
+                                    class="card-img-top" alt="...">
+                                <div class="card-title mt-2 float-left ">Madras-MidNight-Biriyani<i
+                                        class="bi bi-fork-knife" style="color: black;"></i></div>
+                                <p class="cardContent text-muted">Poratta , chickkenBiriyani , BeefBiriyani , <br>
+                                    MuttonBiriyani
+                                </p>
+                                <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i>Kamaraj nagar ,
+                                    madurai</p>
+                                <p class="btn fs-6 cardrating"><i class="bi bi-star-fill fs-5"> 4.2 || 30 - 35
+                                        Mins</i>
+                                </p>
+                                <p class="btn cardoffer">Up to 10% off with
+                                    bank
+                                    offers</p>
+                            </div>
+
+                            <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
+                                <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn795khspdzkmj7ked46cftsyd7mes9d.webp&w=1920&q=75"
+                                    class="card-img-top" alt="...">
+                                <div class="card-title mt-2 float-left ">Pizza Hut<i class="bi bi-fork-knife"
+                                        style="color: black;"></i></div>
+                                <p class="cardContent text-muted">Pizza , Burger , Shawarma , French Fry ....</p>
+                                <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> Besent Nagar ,
+                                    Chennai</p>
+                                <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
+                                    4.3 || 30 - 35
+                                    Mins</p>
+                                <p class="btn cardoffer">Up to 10% off with
+                                    bank
+                                    offers</p>
+                            </div>
+
+                            <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
+                                <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7fzrqcds39zdm1xp8b82pbw57mfdwc.webp&w=1920&q=75"
+                                    class="card-img-top" alt="...">
+                                <div class="card-title mt-2 float-left ">Salem RR Biriyani<i class="bi bi-fork-knife"
+                                        style="color: black;"></i></div>
+                                <p class="cardContent text-muted">ChickenBiriyani , MuttonBiriyani , Chicken 65 <br>
+                                    Grill
+                                    Chicken.......</p>
+                                <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> Salem RR Biriyani
+                                </p>
+                                <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
+                                    4.1 || 30 - 35
+                                    Mins</p>
+                                <p class="btn cardoffer">Up to 10% off with
+                                    bank
+                                    offers</p>
+                            </div>
+
+                            <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
+                                <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn78smjmv3k0hg8hng8f8df5ss7mepzx.webp&w=1920&q=75"
+                                    class="card-img-top" alt="...">
+                                <div class="card-title mt-2 float-left ">Border MM Porata<i class="bi bi-fork-knife"
+                                        style="color: black;"></i></div>
+                                <p class="cardContent text-muted">Poratta , chickkenGravy , MuttonGravy .......</p>
+                                <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> Sengottai ,
+                                    Tenkasi
+                                </p>
+                                <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
+                                    4.8 || 30 - 35
+                                    Mins</p>
+                                <p class="btn cardoffer">Up to 10% off with
+                                    bank
+                                    offers</p>
+                            </div>
+
+                            <div class="card bg-light p-4 mt-4 border border-2 m-2 width=18rem">
+                                <img src="https://www.gentube.app/_next/image?url=https%3A%2F%2Fd2z5znftraj9jv.cloudfront.net%2Fjn7f7n9abca40bgmwyefh9tfmn7mewgd.webp&w=1920&q=75"
+                                    class="card-img-top" alt="...">
+                                <div class="card-title mt-2 float-left ">t<i class="bi bi-fork-knife"
+                                        style="color: black;"></i>Hotel Junction</div>
+                                <p class="cardContent text-muted">Idle , Dosa , Puri , Pongal , Vada , Pure Veg</p>
+                                <p class="btn fs-6 cardlocation"><i class="bi bi-geo-alt fw-bold"></i> junction ,
+                                    tirunelveli</p>
+                                <p class="btn fs-6 cardrating"> <i class="bi bi-star-fill fs-5"></i>
+                                    4.7 || 30 - 35
+                                    Mins</p>
+                                <p class="btn cardoffer">Up to 10% off with
+                                    bank
+                                    offers</p>
+                            </div>
+                        </div>
+
+
+                        <!-- Add other restaurant cards similarly... -->
+
+                    </div>
+                    <footer class="text-center mt-5 p-4 bg-dark text-light restaurant-footer">
+                        <div class="fs-5 mb-2"> Thank you for choosing Foodie<span style="color: red;">Go!</span></div>
+                        <div>Bringing the best dining experiences right to your doorstep.</div>
+                        <small class="d-block mt-2">&copy; 2025 Foodie<span style="color: red;">Go.</span> All rights
+                            reserved.</small>
+                    </footer>
 
                 </div>
+
+                <!-- Top Rated by Customers Tab -->
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                     tabindex="0">
-                    <div class="Ratedhead">
-                        <div class="text-center p-4 m-4 fs-1 fw-bold">TOP RATED
-                            Foodie<span style="color: red;">Go</span> BY CUSTOMER</div>
+                    <div class="Ratedhead text-center p-4 m-4 fs-1 fw-bold text-warning">
+                        🌟 TOP RATED Foodie<span style="color: rgb(19, 18, 18);">Go</span> BY CUSTOMERS
                     </div>
-                    <div class="subContainer5">
 
+                    <div class="subContainer5">
+                        <section class="container my-5">
+                            <div class="row g-4">
+
+                                <!-- Food Card -->
+                                <div class="col-md-4">
+                                    <div class="card shadow food-card">
+                                        <img src="/static/images/paneer_tikka.jpg" class="card-img-top"
+                                            alt="Paneer Tikka">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Paneer Tikka</h5>
+                                            <p class="card-text pt-3">"Juicy and perfectly spiced! A festival favorite."
+                                                – Ramesh</p>
+                                            <div class="stars mb-2">⭐️⭐️⭐️⭐️⭐️</div>
+                                            <button class="btn btn-success w-100">Order Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card shadow food-card">
+                                        <img src="/static/images/hyderabadi_biryani.jpg" class="card-img-top"
+                                            alt="Hyderabadi Biryani">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Hyderabadi Biryani</h5>
+                                            <p class="card-text pt-3">"Authentic and flavorful. Just like Hyderabad!" –
+                                                Ayesha</p>
+                                            <div class="stars mb-2">⭐️⭐️⭐️⭐️⭐️</div>
+                                            <button class="btn btn-success w-100">Order Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card shadow food-card">
+                                        <img src="/static/images/gulab_jamun.jpg" class="card-img-top"
+                                            alt="Gulab Jamun">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gulab Jamun</h5>
+                                            <p class="card-text pt-3">"Melts in your mouth! Perfect after every meal." –
+                                                Neha</p>
+                                            <div class="stars mb-2">⭐️⭐️⭐️⭐️⭐️</div>
+                                            <button class="btn btn-success w-100">Order Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                        <footer class="text-center mt-5 p-4 bg-warning text-dark top-rated-footer">
+                            <h5 class="mb-2">🌟 Thank You for Your Love and Trust! 🌟</h5>
+                            <p>Your feedback helps us serve you better every day.</p>
+                            <small>&copy; 2025 FoodieGo | Crafted with care for food lovers.</small>
+                        </footer>
 
                     </div>
                 </div>
+
+                <!-- Festival Specials Tab -->
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
-                    tabindex="0"></div>
+                    tabindex="0">
+
+                    <div class="festival-banner text-center text-white py-5">
+                        <h1 style="color: black;">🎉 Festival Feast Offers 🎊</h1>
+                        <p class="fs-5">Celebrate this season with delicious discounts & festive flavors!</p>
+                    </div>
+
+                    <!-- Festival Offers Grid -->
+                    <div class="container mt-5">
+                        <div class="row g-4">
+
+                            <div class="col-md-4">
+                                <div class="card offer-card shadow-lg">
+                                    <img src="/static/images/festival_biryani.jpg" class="card-img-top"
+                                        alt="Festive Biryani Box">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Festive Biryani Box</h5>
+                                        <p class="card-text pt-3">Authentic Dum Biryani + Dessert at ₹199 only!</p>
+                                        <button class="btn btn-danger w-100">Order Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card offer-card shadow-lg">
+                                    <img src="/static/images/festival_sweets.jpg" class="card-img-top"
+                                        alt="Sweet Celebration Box">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Sweet Celebration Box</h5>
+                                        <p class="card-text pt-3">10-piece special festive sweets combo at ₹149.</p>
+                                        <button class="btn btn-danger w-100">Order Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add more festival offer cards as needed -->
+
+                        </div>
+                    </div>
+
+                    <div class="text-center my-4">
+                        <h4 class="text-danger">🕒 Offer ends in: <span id="countdown"></span></h4>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="text-center mt-5 p-4 text-white festival-footer">
+                        🪔 Happy Festive Season from FoodieGo 🪔 | Delicious moments made special 🎊
+                    </footer>
+
+                </div>
             </div>
         </section>
-        <br>
+
         <hr>
     </main>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-dark text-light pt-5 pb-4" id="footer">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">About Foodie<span style="color: red;">Go</span></h5>
+                    <p>
+                        FoodieGo delivers your favorite meals <br> fast and fresh from top restaurants to <br> your
+                        doorstep.
+                        Experience delicious <br> moments made special.
+                    </p>
+                </div>
+
+
+                <div class="col-md-4 mb-4 ps-5">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#foodItem" class="text-light text-decoration-none">Food</a></li>
+                        <li><a href="#juiceItems" class="text-light text-decoration-none">Juices</a></li>
+                        <li><a href="#dessertsItem" class="text-light text-decoration-none">Desserts</a></li>
+                        <li><a href="#SnacksItem" class="text-light text-decoration-none">Snacks & Sides</a></li>
+                        <li><a href="#restaurants" class="text-light text-decoration-none">Restaurants</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-4 mb-4 ps-5">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p>Email: support@foodiego.com</p>
+                    <p>Phone: +91 9894393894</p>
+                    <p>Address: 123 Foodie Street, Gourmet City, India</p>
+
+
+                    <div class="mt-3">
+                        <a href="#" class="text-light me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light me-3 fs-4"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light me-3 fs-4"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="border-light">
+
+            <div class="text-center small">
+                Site managed by <strong> PATTURAJAN </strong>
+            </div>
+            <div class="text-center small">
+                patturajan045@gmail.com
+            </div>
+            <div class="text-center small">
+                &copy; 2025 FoodieGo. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="../static/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+
 </body>
 
 </html>
