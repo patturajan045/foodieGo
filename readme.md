@@ -1,54 +1,78 @@
-# FoodieGo – Full-Stack Food Ordering Application
+# 🎯 FoodieGo – Full-Stack Food Ordering Application
 
-FoodieGo is a full-stack web application that allows users to browse, order, and manage food items online. Built with **Flask, MongoDB, and modern frontend technologies**, it demonstrates end-to-end web application development, including user authentication, cart management, and order processing.
-
----
-
-## Features
-
-- User Management: Sign up, login, and manage profile information
-- Customer Details: Store and manage customer addresses and contact information
-- Cart & Orders: Add food items to the cart, update quantities, and place orders with delivery preferences
-- RESTful APIs: Backend implemented using Flask and MongoEngine for database operations
-- Database Design: MongoDB schemas for users, customers, carts, and orders with timestamps and UUIDs
-- API Testing: All endpoints validated using Postman for reliability
-- Frontend: Responsive design using HTML, CSS, JavaScript, and Bootstrap
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.3-lightgrey?logo=flask&logoColor=black)](https://flask.palletsprojects.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-5.0-green?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![Postman](https://img.shields.io/badge/Postman-202020?logo=postman&logoColor=orange)](https://www.postman.com/)
 
 ---
 
-## Tech Stack
+## 🚀 Project Overview
 
-- **Backend:** Python, Flask, MongoEngine  
-- **Frontend:** HTML, CSS, JavaScript, Bootstrap  
-- **Database:** MongoDB  
-- **Tools:** Postman, Git  
+**FoodieGo** is a full-stack **food ordering web application** built using **Flask** and **MongoDB**.  
+It allows users to **browse food items, manage a cart, and place orders** with delivery preferences. The app includes **user authentication, order management, and backend API handling** for seamless functionality.
 
 ---
 
-## Project Structure
+## 🛠️ Features
 
-FoodieGo/
-│
-├─ app.py # Main Flask application
-├─ models.py # MongoEngine models for User, Customer, Cart, and Order
-├─ routes/ # Flask routes for API endpoints
-├─ templates/ # HTML templates
-├─ static/
-│ ├─ css/ # Stylesheets
-│ └─ js/ # JavaScript files
-├─ README.md
-└─ requirements.txt # Python dependencies 
-
-
+- 🔑 **User Authentication** – Secure registration and login system.  
+- 🛒 **Cart Management** – Add, update, and remove food items from the cart.  
+- 🍽️ **Order Processing** – Place orders with quantity, tip, and delivery preferences.  
+- 🗂️ **Customer Management** – Store and manage customer addresses and contact details.  
+- 🔒 **Backend APIs** – RESTful APIs implemented using Flask and MongoEngine.  
+- 📱 **Responsive Frontend** – Built with HTML, CSS, JavaScript, and Bootstrap.  
+- 🧪 **API Testing** – Endpoints tested and validated using Postman.  
 
 ---
 
-## Installation & Setup
+## 🗃️ Data Models
 
-1. Clone the repository:
+FoodieGo uses **MongoDB** with **MongoEngine** ODM. Key models:
+
+### 1️⃣ User
+- `id`, `name`, `email`, `password`, `role`  
+- Timestamps: `addedTime`, `updatedTime`  
+
+### 2️⃣ CustomerDetails
+- `id`, `customerName`, `phoneNumber`, `email`, `Address`, `city`, `state`, `pincode`  
+- Timestamps: `addedTime`, `updatedTime`  
+
+### 3️⃣ Cart
+- `id`, `userId`, `foodId`, `foodName`, `foodPrice`, `quantity`, `imageUrl`  
+- Timestamps: `addedTime`, `updatedTime`  
+
+### 4️⃣ Order
+- `id`, `userId`, `restaurant`, `foodName`, `quantity`, `couponCode`, `specialInstructions`  
+- `paymentMethod`, `deliveryTimePreference`, `scheduledDelivery`, `tipAmount`  
+- Timestamps: `orderDate`, `addedTime`, `updatedTime`  
+
+> This structure ensures **scalable data management** and **efficient backend operations**.
+
+---
+
+## 🖥️ Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| Backend | Python, Flask, MongoEngine |
+| Frontend | HTML5, CSS3, JavaScript, Bootstrap |
+| Database | MongoDB |
+| API Testing | Postman |
+| Version Control | Git & GitHub |
+
+---
+
+## ⚡ Installation & Setup
+
+1. **Clone the repo**
 
 ```bash
-git clone https://github.com/yourusername/FoodieGo.git
+git clone https://github.com/<yourusername>/FoodieGo.git
 cd FoodieGo
 
 
