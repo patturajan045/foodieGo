@@ -1,35 +1,20 @@
-from flask import jsonify, render_template
-from . import juiceBp
-from pymongo import MongoClient
-from bson import ObjectId
+from flask import Blueprint, jsonify, render_template, current_app
 
-# Initialize MongoDB client
-client = MongoClient('mongodb://localhost:27017')
-db = client['FoodieGo']              # Database
-food_collection = db['juice']        # Single collection for all foods
+from .import juiceBp
 
-# Render HTML page
-@juiceBp.route('/', methods=['GET'])
-def customer_details_form():
+@juiceBp.route("/", methods=["GET"])
+def juice_page():
     return render_template("juiceItems.html")
 
-# Get all food items
-
-@juiceBp.route('/all', methods=['GET'])
-def get_all_food_items():
+@juiceBp.route("/all", methods=["GET"])
+def get_all_juice_items():
     try:
-        items = list(food_collection.find())
-        # Convert ObjectId to string for JSON serialization
+        juice_collection = current_app.mongo_collections["juice"]
+        items = list(juice_collection.find())
         for item in items:
-            item['_id'] = str(item['_id'])
-        return jsonify({
-            "status": "success",
-            "data": items
-        }), 200
+            item["_id"] = str(item["_id"])
+            if "imageUrl" not in item:
+                item["imageUrl"] = ""
+        return jsonify({"status": "success", "data": items}), 200
     except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": f"Failed to fetch items: {str(e)}"
-        }), 500
-
-
+        return jsonify({"status": "error", "message": str(e)}), 500

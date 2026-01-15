@@ -1,25 +1,20 @@
-from flask import jsonify, render_template
-from . import snacksBp
-from pymongo import MongoClient
-from bson import ObjectId
+from flask import Blueprint, jsonify, render_template, current_app
 
-# Initialize MongoDB client
-client = MongoClient('mongodb://localhost:27017')
-db = client['FoodieGo']             # Database name
-snack_collection = db['snacks']     # Snacks collection
+from .import snacksBp
 
-# Render HTML page for snacks
-@snacksBp.route('/', methods=['GET'])
-def snack_page():
+@snacksBp.route("/", methods=["GET"])
+def snacks_page():
     return render_template("snackItems.html")
 
-# Get all snack items
-@snacksBp.route('/all', methods=['GET'])
+@snacksBp.route("/all", methods=["GET"])
 def get_all_snacks():
     try:
+        snack_collection = current_app.mongo_collections["snacks"]
         items = list(snack_collection.find())
         for item in items:
-            item['_id'] = str(item['_id'])  # Convert ObjectId to string
-        return jsonify(status="success", data=items), 200
+            item["_id"] = str(item["_id"])
+            if "imageUrl" not in item:
+                item["imageUrl"] = ""
+        return jsonify({"status": "success", "data": items}), 200
     except Exception as e:
-        return jsonify(status="error", message=f"Failed to fetch snacks: {str(e)}"), 500
+        return jsonify({"status": "error", "message": str(e)}), 500

@@ -2,15 +2,13 @@ from flask import Blueprint, request, jsonify, current_app, render_template, ses
 from uuid import uuid4
 from datetime import datetime
 
-from . import customerBp
+from .import customerBp
 
 # ---------------------------
 # ADD CUSTOMER
 # ---------------------------
 @customerBp.route("/", methods=["POST"])
 def add_customer():
-    db = current_app.mongo_db
-
     user = session.get("user")
     if not user:
         return jsonify({"status": "error", "message": "User not logged in"}), 401
@@ -18,16 +16,15 @@ def add_customer():
     data = request.get_json(force=True) or {}
 
     required = ["customerName", "phone", "email", "address", "city", "state", "pincode"]
-    missing = [field for field in required if not data.get(field)]
+    missing = [f for f in required if not data.get(f)]
     if missing:
-        return jsonify({
-            "status": "error",
-            "message": f"Missing fields: {', '.join(missing)}"
-        }), 400
+        return jsonify({"status": "error", "message": f"Missing fields: {', '.join(missing)}"}), 400
+
+    customer_collection = current_app.mongo_collections["customers"]
 
     customer_data = {
         "_id": str(uuid4()),
-        "userEmail": user["email"],   # Link customer to logged-in user
+        "userEmail": user["email"],
         "customerName": data["customerName"].strip(),
         "phone": data["phone"].strip(),
         "email": data["email"].strip().lower(),
@@ -39,12 +36,13 @@ def add_customer():
         "createdAt": datetime.utcnow()
     }
 
-    db.customers.insert_one(customer_data)
+    customer_collection.insert_one(customer_data)
+
     return jsonify({"status": "success", "message": "Customer added successfully"}), 201
 
 
 # ---------------------------
-# GET ALL CUSTOMERS (for logged-in user)
+# GET ALL CUSTOMERS
 # ---------------------------
 @customerBp.route("/all", methods=["GET"])
 def get_all_customers():
@@ -52,10 +50,9 @@ def get_all_customers():
     if not user:
         return jsonify({"status": "error", "message": "Not logged in"}), 401
 
-    db = current_app.mongo_db
-    customers = list(db.customers.find({"userEmail": user["email"]}))
+    customer_collection = current_app.mongo_collections["customers"]
 
-    # Convert ObjectId/UUID to string
+    customers = list(customer_collection.find({"userEmail": user["email"]}))
     for c in customers:
         c["_id"] = str(c["_id"])
 
@@ -71,14 +68,15 @@ def delete_customer(customer_id):
     if not user:
         return jsonify({"status": "error", "message": "Not logged in"}), 401
 
-    db = current_app.mongo_db
-    result = db.customers.delete_one({
+    customer_collection = current_app.mongo_collections["customers"]
+
+    result = customer_collection.delete_one({
         "_id": customer_id,
         "userEmail": user["email"]
     })
 
     if result.deleted_count == 0:
-        return jsonify({"status": "error", "message": "Customer not found or not authorized"}), 404
+        return jsonify({"status": "error", "message": "Customer not found"}), 404
 
     return jsonify({"status": "success", "message": "Customer deleted successfully"})
 
