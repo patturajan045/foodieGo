@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, render_template, current_app
 from bson import ObjectId
 
-orderDetailsBp = Blueprint("orderDetails", __name__)
+from .import orderDetailsBp
 
 # -----------------
 # GET MY ORDERS

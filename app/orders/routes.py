@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify, session, current_app
 from datetime import datetime
 from uuid import uuid4
 
-ordersBp = Blueprint("orders", __name__)
+from .import ordersBp
 
 # ---------------------------
 # CREATE ORDER

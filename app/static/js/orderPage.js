@@ -125,38 +125,31 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderPayload)
       });
-      const result = await res.json();
-      if (res.ok) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Order Confirmed! 🛵',
-          html: `
-            <b>FoodieGo</b> has received your order.<br>
-            Your feast is on its way 🚀<br>
-            <small>Sit back & relax while we bring the yum to you 🍕🍔</small>
-        `,
-          showCancelButton: true,
-          confirmButtonText: 'See Your Orders',
-          cancelButtonText: 'Close',
-          confirmButtonColor: '#28a745',
-          cancelButtonColor: '#6c757d'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href = '/orderDetails'; // redirect to orders page
-          }
-        });
 
-        form.reset();
-        cardSection.style.display = 'none';
-        cashMsg.style.display = 'none';
-        schedulePicker.style.display = 'none';
-      } else {
-        showError(result.error || 'Something went wrong.');
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || 'Order failed');
       }
+
+      const result = await res.json();
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Order Confirmed 🛵',
+        text: 'Your food is on the way!',
+        confirmButtonColor: '#28a745'
+      }).then(() => {
+        window.location.href = '/orderDetails';
+      });
 
     } catch (err) {
       console.error(err);
-      showError('Network error: ' + err.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Order Error',
+        text: err.message
+      });
     }
+
   });
 });
