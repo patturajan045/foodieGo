@@ -1,13 +1,13 @@
 from pymongo import MongoClient
 from app.config import Config
 
-# Connect to MongoDB Atlas
+# Create MongoDB client
 client = MongoClient(Config.MONGO_URI)
 
-# IMPORTANT: must match Atlas database name exactly
-db = client["foodieGo"]
+# Use correct DB name (case-sensitive)
+db = client["FoodieGo"]
 
-# Collections (case-sensitive)
+# Collections
 user_collection     = db["User"]
 cart_collection     = db["cart"]
 customer_collection = db["customers"]
@@ -17,14 +17,10 @@ juice_collection    = db["juice"]
 order_collection    = db["orders"]
 snack_collection    = db["snacks"]
 
-# Test connection
 def test_connection():
     try:
         print("Databases:", client.list_database_names())
         print("Collections:", db.list_collection_names())
-        print("MongoDB Atlas Connected Successfully")
+        print("✅ MongoDB Atlas Connected Successfully")
     except Exception as e:
-        print("MongoDB Connection Failed:", e)
-
-if __name__ == "__main__":
-    test_connection()
+        print("❌ MongoDB Connection Failed:", e)
