@@ -1,54 +1,54 @@
-from flask import request, jsonify, session , redirect
-from werkzeug.security import generate_password_hash ,check_password_hash
-from models import User
+from flask import request, jsonify, session, redirect, current_app
+from werkzeug.security import generate_password_hash, check_password_hash
 from . import authBp
 
+
+# ---------------- REGISTER ----------------
 @authBp.post('/register')
 def register():
     try:
         data = request.get_json()
-        print(data)
 
-        # Validate required fields
-        required_fields = ["name", "email", "password"]
-        if not all(data.get(field) for field in required_fields):
+        # Validate fields
+        if not data or not data.get("name") or not data.get("email") or not data.get("password"):
             return jsonify({
                 "status": "error",
                 "message": "Missing required fields (name, email, password)"
             }), 400
 
-        # Check for duplicate email
-        if User.objects(email=data["email"]).first():
+        users = current_app.mongo_collections["user"]
+
+        # Check duplicate email
+        if users.find_one({"email": data["email"]}):
             return jsonify({
                 "status": "error",
                 "message": "Email already registered"
             }), 409
-        
-        if data["email"].lower() == "patturajan045@gmail.com":
-            role = "admin"
-        else:
-            role = "user"
 
+        # Role
+        role = "admin" if data["email"].lower() == "patturajan045@gmail.com" else "user"
 
-        # Create and save new user
-        user = User(
-            name=data["name"],
-            email=data["email"],
-            password=generate_password_hash(data["password"]),
-            role=role
-        ).save()
+        # Create user
+        user = {
+            "name": data["name"],
+            "email": data["email"],
+            "password": generate_password_hash(data["password"]),
+            "role": role
+        }
 
-        # Store user info in session
+        result = users.insert_one(user)
+
+        # Store session
         session["user"] = {
-            "id": str(user.id),
-            "name": user.name,
-            "email": user.email,
-            "role": user.role
+            "id": str(result.inserted_id),
+            "name": user["name"],
+            "email": user["email"],
+            "role": role
         }
 
         return jsonify({
             "status": "success",
-            "message": "Register Successfully"
+            "message": "Registered Successfully"
         }), 200
 
     except Exception as e:
@@ -58,34 +58,33 @@ def register():
         }), 500
 
 
+# ---------------- LOGIN ----------------
 @authBp.post('/login')
 def login():
-    data = request.get_json()
-    print(data)
-    
     try:
-        if data["email"] == "" or data["password"] == "":
+        data = request.get_json()
+
+        if not data or not data.get("email") or not data.get("password"):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
 
-        user = User.objects(email=data["email"]).first()
+        users = current_app.mongo_collections["user"]
+
+        user = users.find_one({"email": data["email"]})
 
         if not user:
             return jsonify({"status": "error", "message": "Invalid email or password"}), 401
 
-        if not check_password_hash(user.password, data["password"]):
+        if not check_password_hash(user["password"], data["password"]):
             return jsonify({"status": "error", "message": "Invalid email or password"}), 401
 
         session["user"] = {
-            "id": str(user.id),
-            "name": user.name,
-            "email": user.email,
-            "role": user.role
+            "id": str(user["_id"]),
+            "name": user["name"],
+            "email": user["email"],
+            "role": user["role"]
         }
 
-        if user.role == "admin":
-            redirect_url = "/admin"
-        else:
-            redirect_url = "/index"
+        redirect_url = "/admin" if user["role"] == "admin" else "/index"
 
         return jsonify({
             "status": "success",
@@ -100,12 +99,8 @@ def login():
         }), 500
 
 
+# ---------------- LOGOUT ----------------
 @authBp.get('/logout')
-
 def logout():
-    if session.get('user'):
-        session.clear()
-        return redirect('/login')
-    else:
-        return jsonify({"status": "error", "message": "You are not logged in. Please login to continue."})
-        
+    session.clear()
+    return redirect('/login')
