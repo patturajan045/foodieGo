@@ -5,7 +5,7 @@ from app.config import Config
 client = MongoClient(Config.MONGO_URI)
 
 # IMPORTANT: must match Atlas database name exactly
-db = client["foodiego"]
+db = client["foodieGo"]
 
 # Collections (case-sensitive)
 user_collection     = db["User"]
