@@ -5,7 +5,7 @@ from pymongo import MongoClient
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'your_very_secret_key_here'
+    app.config['SECRET_KEY'] = ''
     app.config.from_object(Config)
 
     # Connect MongoEngine
