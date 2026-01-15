@@ -2,16 +2,16 @@ from pymongo import MongoClient
 from app.config import Config
 
 client = MongoClient(Config.MONGO_URI)
-db = client["FoodieGo"]
+db = client["foodieGo"]
 
 user_collection = db["User"]
-cart_collection = db["Cart"]
-customer_collection = db["Customers"]
-dessert_collection = db["Desserts"]
-food_collection = db["Foods"]
-juice_collection = db["Juice"]
-order_collection = db["Orders"]
-snack_collection = db["Snacks"]
+cart_collection = db["cart"]
+customer_collection = db["customers"]
+dessert_collection = db["desserts"]
+food_collection = db["foods"]
+juice_collection = db["juice"]
+order_collection = db["orders"]
+snack_collection = db["snacks"]
 
 # Optional test function
 def test_connection():
