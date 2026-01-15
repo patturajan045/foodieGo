@@ -3,7 +3,7 @@ from .import foodsBp
 
 @foodsBp.route("/", methods=["GET"])
 def food_page():
-    return render_template("foodItems.html")
+    return render_template("index.html")
 
 @foodsBp.route("/all", methods=["GET"])
 def get_all_food_items():
